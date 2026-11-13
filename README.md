@@ -77,7 +77,13 @@ npx @modelcontextprotocol/inspector uvx boaviztapi-mcp
 - "What would a server with 2x Xeon Gold 6134 and 384 GB RAM emit over 5 years in France?"
 - "What does `adp` mean and what unit is it in?"
 
-A real answer to the first question (the `summary` field of `estimate_component`):
+The first question in Claude Desktop, with the server's tools doing the lookup and the estimate:
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/malikmalikayesha/boaviztapi-mcp/main/assets/claude-desktop-example.png" width="720" alt="Claude Desktop answering 'What's the carbon footprint of running 4 NVIDIA H100 SXM GPUs for one year in Germany?' after calling boaviztapi's search_catalog and estimate_component tools: 766.8 kgCO2eq embedded, 7,100 kgCO2eq use (range 1,035 to 10,350) and 7,867 kgCO2eq in total (range 1,802 to 11,120), GPUs only.">
+</p>
+
+The same answer as the server returns it (the `summary` field of `estimate_component`):
 
 ```
 4x NVIDIA H100 SXM 80GB, over 8760 h (1 year), in Germany (DEU)
