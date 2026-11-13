@@ -1,0 +1,229 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/v1/component/gpu",
+  "params": [
+   [
+    "criteria",
+    "gwp"
+   ],
+   [
+    "verbose",
+    "true"
+   ]
+  ],
+  "body": {
+   "units": 1,
+   "name": "NVIDIA H100 SXM 80GB"
+  }
+ },
+ "status": 200,
+ "json": {
+  "impacts": {
+   "gwp": {
+    "unit": "kgCO2eq",
+    "description": "Total climate change",
+    "embedded": {
+     "value": 575.1,
+     "min": 575.1,
+     "max": 575.1
+    },
+    "use": {
+     "value": 5000.0,
+     "min": 42.31,
+     "max": 20820.0
+    }
+   }
+  },
+  "verbose": {
+   "impacts": {
+    "gwp": {
+     "unit": "kgCO2eq",
+     "description": "Total climate change",
+     "embedded": {
+      "value": 575.1,
+      "min": 575.1,
+      "max": 575.1
+     },
+     "use": {
+      "value": 5000.0,
+      "min": 42.31,
+      "max": 20820.0
+     }
+    },
+    "adp": {
+     "unit": "kgSbeq",
+     "description": "Use of minerals and fossil ressources",
+     "embedded": "not implemented",
+     "use": "not implemented"
+    },
+    "pe": {
+     "unit": "MJ",
+     "description": "Consumption of primary energy",
+     "embedded": "not implemented",
+     "use": "not implemented"
+    }
+   },
+   "units": {
+    "value": 1,
+    "status": "INPUT"
+   },
+   "name": {
+    "value": "NVIDIA H100 SXM 80GB",
+    "status": "COMPLETED",
+    "source": "fuzzy match",
+    "min": "NVIDIA H100 SXM 80GB",
+    "max": "NVIDIA H100 SXM 80GB"
+   },
+   "manufacturer": {
+    "value": "NVIDIA",
+    "status": "COMPLETED",
+    "source": "Completed from name based on https://www.nvidia.com/en-us/data-center/h100/."
+   },
+   "weight": {
+    "value": 1.69,
+    "status": "COMPLETED",
+    "unit": "kg",
+    "source": "Completed from name based on https://www.nvidia.com/en-us/data-center/h100/.",
+    "min": 1.69,
+    "max": 1.69
+   },
+   "heatsink_weight": {
+    "value": 0.90077,
+    "status": "COMPLETED",
+    "unit": "kg",
+    "source": "Completed from name based on https://www.nvidia.com/en-us/data-center/h100/.",
+    "min": 0.90077,
+    "max": 0.90077
+   },
+   "pwb_surface": {
+    "value": 296.37,
+    "status": "COMPLETED",
+    "unit": "cm2",
+    "source": "Completed from name based on https://www.nvidia.com/en-us/data-center/h100/.",
+    "min": 296.37,
+    "max": 296.37
+   },
+   "casing_weight": {
+    "value": 0.78923,
+    "status": "COMPLETED",
+    "unit": "kg",
+    "source": "Completed from name based on https://www.nvidia.com/en-us/data-center/h100/.",
+    "min": 0.78923,
+    "max": 0.78923
+   },
+   "gpu_surface": {
+    "value": 2808.45,
+    "status": "COMPLETED",
+    "unit": "mm2",
+    "source": "Completed from name based on https://www.nvidia.com/en-us/data-center/h100/.",
+    "min": 2808.45,
+    "max": 2808.45
+   },
+   "vram": {
+    "value": 80,
+    "status": "COMPLETED",
+    "unit": "gb",
+    "source": "Completed from name based on https://www.nvidia.com/en-us/data-center/h100/.",
+    "min": 80,
+    "max": 80
+   },
+   "vram_dies": {
+    "value": 6,
+    "status": "COMPLETED",
+    "source": "Completed from name based on https://www.nvidia.com/en-us/data-center/h100/.",
+    "min": 6,
+    "max": 6
+   },
+   "vram_surface": {
+    "value": 2343.1715216882158,
+    "status": "COMPLETED",
+    "unit": "mm2",
+    "min": 2343.1715216882158,
+    "max": 2343.1715216882158
+   },
+   "tdp": {
+    "value": 700.0,
+    "status": "COMPLETED",
+    "unit": "W",
+    "source": "Completed from name based on https://www.nvidia.com/en-us/data-center/h100/.",
+    "min": 700.0,
+    "max": 700.0
+   },
+   "gpus_per_card": {
+    "value": 1,
+    "status": "COMPLETED",
+    "source": "Completed from name based on https://www.nvidia.com/en-us/data-center/h100/."
+   },
+   "transport_boat": {
+    "value": 19000.0,
+    "status": "COMPLETED",
+    "unit": "km",
+    "source": "Completed from name based on https://www.nvidia.com/en-us/data-center/h100/.",
+    "min": 19000.0,
+    "max": 19000.0
+   },
+   "transport_truck": {
+    "value": 1000.0,
+    "status": "COMPLETED",
+    "unit": "km",
+    "source": "Completed from name based on https://www.nvidia.com/en-us/data-center/h100/.",
+    "min": 1000.0,
+    "max": 1000.0
+   },
+   "transport_plane": {
+    "value": 0.0,
+    "status": "COMPLETED",
+    "unit": "km",
+    "source": "Completed from name based on https://www.nvidia.com/en-us/data-center/h100/.",
+    "min": 0.0,
+    "max": 0.0
+   },
+   "duration": {
+    "value": 26280.0,
+    "unit": "hours"
+   },
+   "avg_power": {
+    "value": 479.49999999999994,
+    "status": "COMPLETED",
+    "unit": "W",
+    "min": 70.0,
+    "max": 700.0
+   },
+   "time_workload": {
+    "value": 65.0,
+    "status": "ARCHETYPE",
+    "unit": "%",
+    "min": 0.0,
+    "max": 100.0
+   },
+   "usage_location": {
+    "value": "EEE",
+    "status": "DEFAULT",
+    "unit": "CodSP3 - NCS Country Codes - NATO"
+   },
+   "use_time_ratio": {
+    "value": 1.0,
+    "status": "ARCHETYPE",
+    "unit": "/1",
+    "min": 1.0,
+    "max": 1.0
+   },
+   "hours_life_time": {
+    "value": 26280.0,
+    "status": "ARCHETYPE",
+    "unit": "hours",
+    "min": 26280.0,
+    "max": 26280.0
+   },
+   "gwp_factor": {
+    "value": 0.38,
+    "status": "DEFAULT",
+    "unit": "kg CO2eq/kWh",
+    "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149",
+    "min": 0.023,
+    "max": 1.13161
+   }
+  }
+ }
+}

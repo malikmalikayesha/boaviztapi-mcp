@@ -1,0 +1,133 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/v1/terminal/laptop",
+  "params": [
+   [
+    "criteria",
+    "adp"
+   ],
+   [
+    "criteria",
+    "gwp"
+   ],
+   [
+    "criteria",
+    "pe"
+   ],
+   [
+    "verbose",
+    "true"
+   ]
+  ],
+  "body": {}
+ },
+ "status": 200,
+ "json": {
+  "impacts": {
+   "gwp": {
+    "unit": "kgCO2eq",
+    "description": "Total climate change",
+    "embedded": {
+     "value": 181.0,
+     "min": 181.0,
+     "max": 181.0,
+     "warnings": [
+      "Generic data used for impact calculation."
+     ]
+    },
+    "use": {
+     "value": 300.0,
+     "min": 12.09,
+     "max": 1190.0
+    }
+   },
+   "adp": {
+    "unit": "kgSbeq",
+    "description": "Use of minerals and fossil ressources",
+    "embedded": "not implemented",
+    "use": {
+     "value": 5e-05,
+     "min": 6.959e-06,
+     "max": 0.0002792
+    }
+   },
+   "pe": {
+    "unit": "MJ",
+    "description": "Consumption of primary energy",
+    "embedded": "not implemented",
+    "use": {
+     "value": 10000.0,
+     "min": 6.833,
+     "max": 492100.0
+    }
+   }
+  },
+  "verbose": {
+   "duration": {
+    "value": 35040.0,
+    "unit": "hours"
+   },
+   "avg_power": {
+    "value": 75.0,
+    "status": "ARCHETYPE",
+    "unit": "W",
+    "min": 50.0,
+    "max": 100.0
+   },
+   "usage_location": {
+    "value": "EEE",
+    "status": "DEFAULT",
+    "unit": "CodSP3 - NCS Country Codes - NATO"
+   },
+   "use_time_ratio": {
+    "value": 0.3,
+    "status": "ARCHETYPE",
+    "unit": "/1",
+    "min": 0.3,
+    "max": 0.3
+   },
+   "hours_life_time": {
+    "value": 35040.0,
+    "status": "ARCHETYPE",
+    "unit": "hours",
+    "min": 35040.0,
+    "max": 35040.0
+   },
+   "gwp_factor": {
+    "value": 0.38,
+    "status": "DEFAULT",
+    "unit": "kg CO2eq/kWh",
+    "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149",
+    "min": 0.023,
+    "max": 1.13161
+   },
+   "adp_factor": {
+    "value": 6.42317e-08,
+    "status": "DEFAULT",
+    "unit": "kg Sbeq/kWh",
+    "source": "ADEME Base IMPACTS ®",
+    "min": 1.324e-08,
+    "max": 2.65575e-07
+   },
+   "pe_factor": {
+    "value": 12.873,
+    "status": "DEFAULT",
+    "unit": "MJ/kWh",
+    "source": "ADPf / (1-%renewable_energy)",
+    "min": 0.013,
+    "max": 468.15
+   },
+   "type": {
+    "value": "pro",
+    "status": "ARCHETYPE"
+   },
+   "units": {
+    "value": 1,
+    "status": "ARCHETYPE",
+    "min": 1,
+    "max": 1
+   }
+  }
+ }
+}

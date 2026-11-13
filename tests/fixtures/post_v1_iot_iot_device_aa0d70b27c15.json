@@ -1,0 +1,492 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/v1/iot/iot_device",
+  "params": [
+   [
+    "archetype",
+    "smart_watch"
+   ],
+   [
+    "criteria",
+    "adp"
+   ],
+   [
+    "criteria",
+    "gwp"
+   ],
+   [
+    "criteria",
+    "pe"
+   ],
+   [
+    "verbose",
+    "true"
+   ]
+  ],
+  "body": {}
+ },
+ "status": 200,
+ "json": {
+  "impacts": {
+   "gwp": {
+    "unit": "kgCO2eq",
+    "description": "Total climate change",
+    "embedded": {
+     "value": 19.82,
+     "min": 19.82,
+     "max": 19.82,
+     "warnings": [
+      "Connected object, not including associated digital services (use of network, datacenter, virtual machines or other terminals not included)",
+      "Do not include the impact of distribution"
+     ]
+    },
+    "use": "not implemented"
+   },
+   "adp": {
+    "unit": "kgSbeq",
+    "description": "Use of minerals and fossil ressources",
+    "embedded": "not implemented",
+    "use": "not implemented"
+   },
+   "pe": {
+    "unit": "MJ",
+    "description": "Consumption of primary energy",
+    "embedded": {
+     "value": 277.6,
+     "min": 277.6,
+     "max": 277.6,
+     "warnings": [
+      "Connected object, not including associated digital services (use of network, datacenter, virtual machines or other terminals not included)",
+      "Do not include the impact of distribution"
+     ]
+    },
+    "use": "not implemented"
+   }
+  },
+  "verbose": {
+   "duration": {
+    "value": 35040.0,
+    "unit": "hours"
+   },
+   "CASING-1": {
+    "impacts": {
+     "gwp": {
+      "unit": "kgCO2eq",
+      "description": "Total climate change",
+      "embedded": {
+       "value": 0.5222,
+       "min": 0.5222,
+       "max": 0.5222
+      },
+      "use": "not implemented"
+     },
+     "adp": {
+      "unit": "kgSbeq",
+      "description": "Use of minerals and fossil ressources",
+      "embedded": "not implemented",
+      "use": "not implemented"
+     },
+     "pe": {
+      "unit": "MJ",
+      "description": "Consumption of primary energy",
+      "embedded": {
+       "value": 11.4,
+       "min": 11.4,
+       "max": 11.4
+      },
+      "use": "not implemented"
+     }
+    },
+    "units": {
+     "value": 1,
+     "status": "ARCHETYPE",
+     "min": 1,
+     "max": 1
+    },
+    "hsl_level": {
+     "value": "HSL-1",
+     "status": "ARCHETYPE",
+     "unit": "none"
+    },
+    "duration": {
+     "value": 35040.0,
+     "unit": "hours"
+    }
+   },
+   "CONNECTIVITY-1": {
+    "impacts": {
+     "gwp": {
+      "unit": "kgCO2eq",
+      "description": "Total climate change",
+      "embedded": {
+       "value": 1.0110000000000001,
+       "min": 1.011,
+       "max": 1.011
+      },
+      "use": "not implemented"
+     },
+     "adp": {
+      "unit": "kgSbeq",
+      "description": "Use of minerals and fossil ressources",
+      "embedded": "not implemented",
+      "use": "not implemented"
+     },
+     "pe": {
+      "unit": "MJ",
+      "description": "Consumption of primary energy",
+      "embedded": {
+       "value": 14.24,
+       "min": 14.24,
+       "max": 14.24
+      },
+      "use": "not implemented"
+     }
+    },
+    "units": {
+     "value": 1,
+     "status": "ARCHETYPE",
+     "min": 1,
+     "max": 1
+    },
+    "hsl_level": {
+     "value": "HSL-2",
+     "status": "ARCHETYPE",
+     "unit": "none"
+    },
+    "duration": {
+     "value": 35040.0,
+     "unit": "hours"
+    }
+   },
+   "MEMORY-1": {
+    "impacts": {
+     "gwp": {
+      "unit": "kgCO2eq",
+      "description": "Total climate change",
+      "embedded": {
+       "value": 6.77,
+       "min": 6.77,
+       "max": 6.77
+      },
+      "use": "not implemented"
+     },
+     "adp": {
+      "unit": "kgSbeq",
+      "description": "Use of minerals and fossil ressources",
+      "embedded": "not implemented",
+      "use": "not implemented"
+     },
+     "pe": {
+      "unit": "MJ",
+      "description": "Consumption of primary energy",
+      "embedded": {
+       "value": 90.3,
+       "min": 90.3,
+       "max": 90.3
+      },
+      "use": "not implemented"
+     }
+    },
+    "units": {
+     "value": 1,
+     "status": "ARCHETYPE",
+     "min": 1,
+     "max": 1
+    },
+    "hsl_level": {
+     "value": "HSL-3",
+     "status": "ARCHETYPE",
+     "unit": "none"
+    },
+    "duration": {
+     "value": 35040.0,
+     "unit": "hours"
+    }
+   },
+   "OTHERS-1": {
+    "impacts": {
+     "gwp": {
+      "unit": "kgCO2eq",
+      "description": "Total climate change",
+      "embedded": {
+       "value": 2.069,
+       "min": 2.069,
+       "max": 2.069
+      },
+      "use": "not implemented"
+     },
+     "adp": {
+      "unit": "kgSbeq",
+      "description": "Use of minerals and fossil ressources",
+      "embedded": "not implemented",
+      "use": "not implemented"
+     },
+     "pe": {
+      "unit": "MJ",
+      "description": "Consumption of primary energy",
+      "embedded": {
+       "value": 39.19,
+       "min": 39.19,
+       "max": 39.19
+      },
+      "use": "not implemented"
+     }
+    },
+    "units": {
+     "value": 1,
+     "status": "ARCHETYPE",
+     "min": 1,
+     "max": 1
+    },
+    "hsl_level": {
+     "value": "HSL-3",
+     "status": "ARCHETYPE",
+     "unit": "none"
+    },
+    "duration": {
+     "value": 35040.0,
+     "unit": "hours"
+    }
+   },
+   "PCB-1": {
+    "impacts": {
+     "gwp": {
+      "unit": "kgCO2eq",
+      "description": "Total climate change",
+      "embedded": {
+       "value": 0.3458,
+       "min": 0.3458,
+       "max": 0.3458
+      },
+      "use": "not implemented"
+     },
+     "adp": {
+      "unit": "kgSbeq",
+      "description": "Use of minerals and fossil ressources",
+      "embedded": "not implemented",
+      "use": "not implemented"
+     },
+     "pe": {
+      "unit": "MJ",
+      "description": "Consumption of primary energy",
+      "embedded": {
+       "value": 7.002,
+       "min": 7.002,
+       "max": 7.002
+      },
+      "use": "not implemented"
+     }
+    },
+    "units": {
+     "value": 1,
+     "status": "ARCHETYPE",
+     "min": 1,
+     "max": 1
+    },
+    "hsl_level": {
+     "value": "HSL-1",
+     "status": "ARCHETYPE",
+     "unit": "none"
+    },
+    "duration": {
+     "value": 35040.0,
+     "unit": "hours"
+    }
+   },
+   "POWER_SUPPLY-1": {
+    "impacts": {
+     "gwp": {
+      "unit": "kgCO2eq",
+      "description": "Total climate change",
+      "embedded": {
+       "value": 4.686,
+       "min": 4.686,
+       "max": 4.686
+      },
+      "use": "not implemented"
+     },
+     "adp": {
+      "unit": "kgSbeq",
+      "description": "Use of minerals and fossil ressources",
+      "embedded": "not implemented",
+      "use": "not implemented"
+     },
+     "pe": {
+      "unit": "MJ",
+      "description": "Consumption of primary energy",
+      "embedded": {
+       "value": 53.17,
+       "min": 53.17,
+       "max": 53.17
+      },
+      "use": "not implemented"
+     }
+    },
+    "units": {
+     "value": 1,
+     "status": "ARCHETYPE",
+     "min": 1,
+     "max": 1
+    },
+    "hsl_level": {
+     "value": "HSL-2",
+     "status": "ARCHETYPE",
+     "unit": "none"
+    },
+    "duration": {
+     "value": 35040.0,
+     "unit": "hours"
+    }
+   },
+   "PROCESSING-1": {
+    "impacts": {
+     "gwp": {
+      "unit": "kgCO2eq",
+      "description": "Total climate change",
+      "embedded": {
+       "value": 3.53,
+       "min": 3.53,
+       "max": 3.53
+      },
+      "use": "not implemented"
+     },
+     "adp": {
+      "unit": "kgSbeq",
+      "description": "Use of minerals and fossil ressources",
+      "embedded": "not implemented",
+      "use": "not implemented"
+     },
+     "pe": {
+      "unit": "MJ",
+      "description": "Consumption of primary energy",
+      "embedded": {
+       "value": 47.1,
+       "min": 47.1,
+       "max": 47.1
+      },
+      "use": "not implemented"
+     }
+    },
+    "units": {
+     "value": 1,
+     "status": "ARCHETYPE",
+     "min": 1,
+     "max": 1
+    },
+    "hsl_level": {
+     "value": "HSL-2",
+     "status": "ARCHETYPE",
+     "unit": "none"
+    },
+    "duration": {
+     "value": 35040.0,
+     "unit": "hours"
+    }
+   },
+   "SENSING-1": {
+    "impacts": {
+     "gwp": {
+      "unit": "kgCO2eq",
+      "description": "Total climate change",
+      "embedded": {
+       "value": 0.046,
+       "min": 0.046,
+       "max": 0.046
+      },
+      "use": "not implemented"
+     },
+     "adp": {
+      "unit": "kgSbeq",
+      "description": "Use of minerals and fossil ressources",
+      "embedded": "not implemented",
+      "use": "not implemented"
+     },
+     "pe": {
+      "unit": "MJ",
+      "description": "Consumption of primary energy",
+      "embedded": {
+       "value": 0.617,
+       "min": 0.617,
+       "max": 0.617
+      },
+      "use": "not implemented"
+     }
+    },
+    "units": {
+     "value": 1,
+     "status": "ARCHETYPE",
+     "min": 1,
+     "max": 1
+    },
+    "hsl_level": {
+     "value": "HSL-2",
+     "status": "ARCHETYPE",
+     "unit": "none"
+    },
+    "duration": {
+     "value": 35040.0,
+     "unit": "hours"
+    }
+   },
+   "USER_INTERFACE-1": {
+    "impacts": {
+     "gwp": {
+      "unit": "kgCO2eq",
+      "description": "Total climate change",
+      "embedded": {
+       "value": 0.8424,
+       "min": 0.8424,
+       "max": 0.8424
+      },
+      "use": "not implemented"
+     },
+     "adp": {
+      "unit": "kgSbeq",
+      "description": "Use of minerals and fossil ressources",
+      "embedded": "not implemented",
+      "use": "not implemented"
+     },
+     "pe": {
+      "unit": "MJ",
+      "description": "Consumption of primary energy",
+      "embedded": {
+       "value": 14.55,
+       "min": 14.55,
+       "max": 14.55
+      },
+      "use": "not implemented"
+     }
+    },
+    "units": {
+     "value": 1,
+     "status": "ARCHETYPE",
+     "min": 1,
+     "max": 1
+    },
+    "hsl_level": {
+     "value": "HSL-3",
+     "status": "ARCHETYPE",
+     "unit": "none"
+    },
+    "duration": {
+     "value": 35040.0,
+     "unit": "hours"
+    }
+   },
+   "hours_life_time": {
+    "value": 35040.0,
+    "status": "ARCHETYPE",
+    "unit": "hours",
+    "min": 35040.0,
+    "max": 35040.0
+   },
+   "units": {
+    "value": 1,
+    "status": "ARCHETYPE",
+    "min": 1,
+    "max": 1
+   }
+  }
+ }
+}
