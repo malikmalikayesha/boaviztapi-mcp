@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/malikmalikayesha/boaviztapi-mcp/main/assets/icon.svg" width="96" height="96" alt="boaviztapi-mcp icon: a chip with a leaf">
-</p>
-
 # boaviztapi-mcp
 
 [![CI](https://github.com/malikmalikayesha/boaviztapi-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/malikmalikayesha/boaviztapi-mcp/actions/workflows/ci.yml)
