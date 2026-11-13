@@ -1,0 +1,49 @@
+# Contributing
+
+Thanks for helping. Small, focused pull requests are the easiest to review.
+
+## Setup
+
+```bash
+uv sync
+uv run pytest
+```
+
+Before opening a pull request, these must pass:
+
+```bash
+uv run ruff check .
+uv run ruff format --check .
+uv run pyright
+uv run pytest
+```
+
+## Conventions
+
+- Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/) (`feat(tools): ...`, `fix(catalog): ...`).
+- Only `src/boaviztapi_mcp/server.py` imports the MCP SDK. Everything else is plain async Python and is tested without it.
+- The server never computes impacts itself. It only sums embedded and use into a total. If a number looks wrong, check it against BoaviztAPI directly and report it [upstream](https://github.com/Boavizta/boaviztapi/issues).
+
+## Tests and fixtures
+
+- Tests replay recorded BoaviztAPI responses from `tests/fixtures/`. To cover a new request, add a scenario to `tests/scenarios.py` and record it:
+
+  ```bash
+  uv run python scripts/record_fixtures.py
+  ```
+
+  Use `--base-url http://localhost:5000` to record from a local instance.
+- Summary text is compared with `tests/golden/`. After an intended change, regenerate with `UPDATE_GOLDEN=1 uv run pytest tests/unit/test_formatting.py` and review the diff.
+- Live tests (`-m live`) run against a real instance:
+
+  ```bash
+  docker run -p 5000:5000 ghcr.io/boavizta/boaviztapi:latest
+  BOAVIZTAPI_URL=http://localhost:5000 uv run pytest -m live -rxX
+  ```
+
+  Known upstream quirks are strict `xfail` tests. If one starts passing, upstream changed: review the matching workaround and remove it if it is no longer needed.
+
+## Releasing
+
+1. Update the version in `src/boaviztapi_mcp/__init__.py` and `server.json` (both `version` fields), and move the `Unreleased` notes in `CHANGELOG.md` under the new version.
+2. Merge, then tag `vX.Y.Z` on `main` and push the tag. The release workflow publishes to PyPI, the MCP Registry and GitHub Releases.
