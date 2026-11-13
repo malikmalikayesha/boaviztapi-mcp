@@ -14,7 +14,7 @@ import httpx2
 from mcp.server.caching import CacheableMethod, CacheHint
 from mcp.server.mcpserver import MCPServer
 from mcp.server.mcpserver.exceptions import ToolError
-from mcp.types import ToolAnnotations
+from mcp.types import Icon, ToolAnnotations
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
 from boaviztapi_mcp import __version__
@@ -76,6 +76,14 @@ DESCRIPTION = (
     " cloud instances, servers, GPUs and other components, and end-user devices"
     " with BoaviztAPI."
 )
+
+ICON_URL = (
+    "https://raw.githubusercontent.com/malikmalikayesha/boaviztapi-mcp/main/assets"
+)
+ICONS = [
+    Icon(src=f"{ICON_URL}/icon.svg", mime_type="image/svg+xml", sizes=["any"]),
+    Icon(src=f"{ICON_URL}/icon.png", mime_type="image/png", sizes=["512x512"]),
+]
 
 # The tool list never changes while the server runs, and is the same for every
 # client, so clients and intermediaries may cache it for a day.
@@ -222,6 +230,7 @@ def create_server(
         version=__version__,
         instructions=INSTRUCTIONS,
         website_url="https://github.com/malikmalikayesha/boaviztapi-mcp",
+        icons=ICONS,
         lifespan=lifespan,
         cache_hints=CACHE_HINTS,
         # No change notifications are ever sent: the tool list is fixed.
@@ -236,11 +245,14 @@ def create_server(
             Field(description="Optional filter on code or description, e.g. 'water'."),
         ] = None,
     ) -> CriteriaList:
-        """List BoaviztAPI impact criteria with their codes, units and meaning.
+        """List BoaviztAPI's impact criteria with their code, unit and meaning, e.g.
+        gwp (climate change, kgCO2eq), adp (abiotic resources, kgSbeq) or pe
+        (primary energy, MJ).
 
-        Use it to explain a code such as gwp (climate change, kgCO2eq), adp (abiotic
-        resources, kgSbeq) or pe (primary energy, MJ), or to pick criteria for the
-        estimate tools.
+        Use it to explain a code that appears in a result, or to choose `criteria`
+        for the estimate tools; it estimates nothing. `query` filters on code, unit
+        or description words such as 'water'. Read-only; the list comes from
+        BoaviztAPI and is cached for a day.
         """
 
         async def run() -> CriteriaList:
@@ -292,11 +304,15 @@ def create_server(
             int, Field(ge=1, le=100, description="Maximum names to return.")
         ] = 20,
     ) -> SearchResult:
-        """Find the exact names BoaviztAPI knows before estimating.
+        """Find the exact names BoaviztAPI knows, before estimating.
 
-        Kinds: cloud_provider, cloud_instance, cloud_region, server_archetype,
-        device_archetype, gpu, cpu and country. Results are exact upstream strings
-        (including upstream typos such as 'platfom_gpucompute_high').
+        Use it whenever an estimate needs a name you are unsure of: a GPU or CPU
+        model, a cloud instance type (needs `provider`), a cloud region, a server or
+        device archetype (needs `device_type`), or a country. Results are exact
+        upstream strings, including upstream typos such as
+        'platfom_gpucompute_high', best matches first and capped by `limit`;
+        `total_matches` says how many exist. To see what one item contains, use
+        describe_catalog_item instead. Read-only; lists are cached for a day.
         """
 
         async def run() -> SearchResult:
@@ -331,8 +347,16 @@ def create_server(
             DeviceType | None, Field(description="Required for device_archetype.")
         ] = None,
     ) -> CatalogItem:
-        """Show what a named item contains: an instance's vCPUs and memory, a server
-        or device archetype's default parts and usage, or a GPU's or CPU's specs."""
+        """Show what a named catalog item contains: a cloud instance's vCPUs, memory
+        and host platform; a server or device archetype's default parts and usage;
+        or a GPU's or CPU's specifications.
+
+        Use it to explain or check the assumptions behind an estimate, or to choose
+        between similar items; it does not estimate impacts. `name` is resolved to
+        the exact upstream name, and an ambiguous name returns the candidates (use
+        search_catalog to find names). `provider` is required for cloud_instance and
+        `device_type` for device_archetype. Read-only; cached for a day.
+        """
 
         async def run() -> CatalogItem:
             resolved, details = await describe(
@@ -365,11 +389,18 @@ def create_server(
         criteria: Criteria = None,
         detail: DetailLevel = "summary",
     ) -> EstimateResult:
-        """Estimate the footprint of one cloud instance (its share of the host).
+        """Estimate the environmental footprint of one cloud VM: its share of the host
+        server's manufacturing (embedded) and the electricity it uses (use), per
+        impact criterion, with units, min-max ranges and warnings.
 
-        Returns embedded and use impacts per criterion with units, ranges and
-        warnings. Use search_catalog(kind='cloud_instance', provider=...) if unsure
-        of the instance name.
+        Use it for a single instance; use compare_estimates to rank several and
+        estimate_server for physical servers. Give either `region` (the provider's
+        region, which fixes the electricity mix) or `usage_location` (a country),
+        not both; with neither, a wide European default is used. `duration_hours`
+        sets the period (8760 = one year); omit it for the whole hardware lifetime.
+        Read-only: one BoaviztAPI request, cached for an hour; if one criterion
+        fails upstream the others are still returned. Use
+        search_catalog(kind='cloud_instance', provider=...) if unsure of a name.
         """
         return await _guard(
             app.estimator.run(
@@ -427,11 +458,18 @@ def create_server(
         criteria: Criteria = None,
         detail: DetailLevel = "summary",
     ) -> EstimateResult:
-        """Estimate the footprint of an on-premise server, optionally with GPUs.
+        """Estimate the environmental footprint of an on-premise server, optionally
+        with GPUs: manufacturing (embedded) and electricity (use) impacts per
+        criterion, with units, ranges and warnings.
 
-        Parts not given come from the archetype; the result says which. The
-        default lifetime is 4 years (35040 h). A period longer than the lifetime
-        counts manufacturing once.
+        Use it for physical servers; use estimate_cloud_instance for cloud VMs and
+        estimate_component for one part on its own. Any part you leave out (CPU,
+        RAM, disks, GPU, power supply, case) comes from `archetype` (default
+        'platform_compute_medium'), and the result lists which ones. The default
+        lifetime is 4 years (35040 h); a `duration_hours` longer than the lifetime
+        counts manufacturing once and says so. Set `usage_location` for a country's
+        electricity mix and detail='breakdown' for per-component impacts.
+        Read-only: one BoaviztAPI request, cached for an hour.
         """
         return await _guard(
             app.estimator.run(
@@ -477,10 +515,16 @@ def create_server(
         criteria: Criteria = None,
         detail: DetailLevel = "summary",
     ) -> EstimateResult:
-        """Estimate the footprint of a single component: gpu, cpu, ram, ssd or hdd.
+        """Estimate the environmental footprint of one kind of component (gpu, cpu,
+        ram, ssd or hdd), `units` of it: manufacturing (embedded) and electricity
+        (use) impacts per criterion, with units, ranges and warnings.
 
-        A GPU alone excludes its host server; use estimate_server with a gpu block
-        for a whole system.
+        Use it for parts on their own, such as eight H100 GPUs. A GPU alone excludes
+        its host server: for a whole machine use estimate_server with a `gpu` block.
+        `name` and `tdp_w` apply to gpu and cpu, `capacity_gb` to ram, ssd and hdd;
+        other combinations are an error. Names are resolved to BoaviztAPI's model
+        names and an ambiguous one (such as 'h100') returns the candidates.
+        Read-only: one BoaviztAPI request, cached for an hour.
         """
         return await _guard(
             app.estimator.run(
@@ -519,9 +563,20 @@ def create_server(
         criteria: Criteria = None,
         detail: DetailLevel = "summary",
     ) -> EstimateResult:
-        """Estimate the footprint of an end-user device: laptop, desktop, smartphone,
-        tablet, television, box, VR headset or controller, monitor, USB stick,
-        external SSD or HDD, or an IoT device."""
+        """Estimate the environmental footprint of an end-user device: laptop,
+        desktop, smartphone, tablet, television, box, vr_headset, vr_controller,
+        monitor, usb_stick, external_ssd, external_hdd or iot_device. Returns
+        manufacturing (embedded) and electricity (use) impacts per criterion, with
+        units, ranges and warnings.
+
+        Use it for devices people use, not servers or cloud (see estimate_server and
+        estimate_cloud_instance). Without `archetype` the device type's default
+        profile is used, except for iot_device, which needs one; list them with
+        search_catalog(kind='device_archetype', device_type=...). `use_time_ratio`
+        is the share of time the device is on (0 to 1). Criteria without data are
+        reported as not available, never as 0. Read-only: one BoaviztAPI request,
+        cached for an hour.
+        """
         return await _guard(
             app.estimator.run(
                 DeviceRequest(
@@ -555,8 +610,17 @@ def create_server(
         criteria: Criteria = None,
     ) -> ComparisonResult:
         """Compare 2 to 5 options (cloud instances, servers, components or devices)
-        over the same period and rank them per criterion, saying when their
-        uncertainty ranges overlap."""
+        over one common period and rank them per criterion, with each total, the
+        difference from the first option, and whether the uncertainty ranges overlap.
+
+        Use it whenever the question is which option is greener or how options
+        differ; use the single estimate tools for one item. Each item has a `label`,
+        a `kind`, and `params` holding the matching estimate tool's inputs (without
+        duration_hours, criteria or detail). `duration_hours` is required so items
+        with different lifetimes compare on equal terms. Every item is checked
+        before any estimate runs, and an invalid item fails the call with its label
+        named. Read-only: one BoaviztAPI request per item.
+        """
 
         async def run() -> ComparisonResult:
             compare_items = [
