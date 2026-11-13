@@ -80,7 +80,9 @@ Source: BoaviztAPI 2.6.0 at https://api.boavizta.org
 
 ## Tools
 
-All tools are read-only. Each returns structured content plus a plain-text `summary`.
+All tools are read-only and carry the matching annotations and a display title. Each returns structured content (with an output schema) plus a plain-text `summary`.
+
+The server speaks the current MCP specification, [2026-07-28](https://modelcontextprotocol.io/specification/2026-07-28) (stateless, with `server/discover`), and still accepts the `2025-11-25` handshake used by older clients. It uses none of the features deprecated in 2026-07-28 (logging, sampling, roots).
 
 | Tool | What it does | Key inputs |
 |---|---|---|
