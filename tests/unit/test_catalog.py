@@ -36,7 +36,7 @@ def test_resolve_refuses_ambiguous_names() -> None:
     with pytest.raises(InputError) as exc:
         resolve("h100", GPUS, what="GPU", hint="Call search_catalog.")
     message = str(exc.value)
-    assert "matches 2 names" in message
+    assert message.startswith("GPU 'h100' matches 2 names")
     assert "NVIDIA H100 SXM 80GB" in message
     assert "NVIDIA H100 PCIe 80GB" in message
     assert "Call search_catalog." in message

@@ -155,7 +155,7 @@ def _ambiguous(text: str, matches: Sequence[str], what: str, hint: str) -> Input
     more = len(matches) - len(shown)
     tail = f" and {more} more" if more > 0 else ""
     return InputError(
-        f"{what.capitalize()} {text!r} matches {len(matches)} names: "
+        f"{what[:1].upper()}{what[1:]} {text!r} matches {len(matches)} names: "
         f"{', '.join(shown)}{tail}. Use one of the exact names. {hint}"
     )
 
