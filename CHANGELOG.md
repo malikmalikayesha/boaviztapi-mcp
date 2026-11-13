@@ -22,6 +22,8 @@ All notable changes to this project are documented here. The format follows
 - Configuration through `BOAVIZTAPI_URL`, `BOAVIZTAPI_TIMEOUT`,
   `BOAVIZTAPI_DEFAULT_CRITERIA` and `BOAVIZTAPI_CACHE_TTL`.
 - Dockerfile, MCP Registry `server.json` and Glama `glama.json`.
+- MCP specification 2026-07-28 (stateless, `server/discover`) with fallback to the
+  2025-11-25 handshake; tool titles, a server description, and a cacheable tool list.
 
 [Unreleased]: https://github.com/malikmalikayesha/boaviztapi-mcp/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/malikmalikayesha/boaviztapi-mcp/releases/tag/v0.1.0
