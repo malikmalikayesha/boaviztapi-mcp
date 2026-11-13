@@ -49,7 +49,7 @@ class RamSpec(_Model):
 
 
 class DiskSpec(_Model):
-    type: Literal["ssd", "hdd"]
+    type: Literal["ssd", "hdd"] = Field(description="Disk technology.")
     units: int = Field(default=1, ge=1, description="Number of disks.")
     capacity_gb: int | None = Field(
         default=None, gt=0, description="Capacity of one disk in GB."
