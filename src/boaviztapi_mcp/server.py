@@ -14,7 +14,7 @@ import httpx2
 from mcp.server.caching import CacheableMethod, CacheHint
 from mcp.server.mcpserver import MCPServer
 from mcp.server.mcpserver.exceptions import ToolError
-from mcp.types import Icon, ToolAnnotations
+from mcp.types import ToolAnnotations
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
 from boaviztapi_mcp import __version__
@@ -76,14 +76,6 @@ DESCRIPTION = (
     " cloud instances, servers, GPUs and other components, and end-user devices"
     " with BoaviztAPI."
 )
-
-ICON_URL = (
-    "https://raw.githubusercontent.com/malikmalikayesha/boaviztapi-mcp/main/assets"
-)
-ICONS = [
-    Icon(src=f"{ICON_URL}/icon.svg", mime_type="image/svg+xml", sizes=["any"]),
-    Icon(src=f"{ICON_URL}/icon.png", mime_type="image/png", sizes=["512x512"]),
-]
 
 # The tool list never changes while the server runs, and is the same for every
 # client, so clients and intermediaries may cache it for a day.
@@ -230,7 +222,6 @@ def create_server(
         version=__version__,
         instructions=INSTRUCTIONS,
         website_url="https://github.com/malikmalikayesha/boaviztapi-mcp",
-        icons=ICONS,
         lifespan=lifespan,
         cache_hints=CACHE_HINTS,
         # No change notifications are ever sent: the tool list is fixed.
