@@ -275,14 +275,15 @@ def create_server(
             hits = await app.catalog.search(
                 kind, query, provider=provider, device_type=device_type, limit=limit
             )
-            shown = ", ".join(hits.names) if hits.names else "no matches"
+            shown = ", ".join(hits.names) if hits.names else "nothing found"
+            noun = "match" if hits.total == 1 else "matches"
             more = (
                 f" (showing {len(hits.names)} of {hits.total})"
                 if hits.total > len(hits.names)
                 else ""
             )
             return SearchResult(
-                summary=f"{hits.total} {kind} match{more}: {shown}",
+                summary=f"{hits.total} {kind} {noun}{more}: {shown}",
                 kind=kind,
                 query=query,
                 total_matches=hits.total,

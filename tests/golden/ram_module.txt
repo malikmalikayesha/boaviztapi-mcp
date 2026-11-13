@@ -12,5 +12,5 @@ pe, Consumption of primary energy (MJ):
   embedded: 490 (range 269.9 to 956.5) [warning: End of life is not included in the calculation]
   use: 550 (range 451.3 to 644.8)
   total: 1040 (range 721.2 to 1601)
-Assumptions: units 1, capacity 64 GB, average power 5.542 W, load 50 %, use time ratio 1, lifetime 26280 hours, grid carbon intensity 0.098 kg CO2eq/kWh.
+Assumptions: units 1, capacity 64 GB, average power 5.542 W (range 4.564 to 6.52), load 50 % (range 0 to 100), use time ratio 1, lifetime 26280 hours, grid carbon intensity 0.098 kg CO2eq/kWh.
 Source: BoaviztAPI 2.6.0 at https://api.boavizta.org

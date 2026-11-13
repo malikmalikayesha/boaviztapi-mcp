@@ -12,7 +12,7 @@ pe, Consumption of primary energy (MJ):
   embedded: 22000 (range 18240 to 30690) [warning: End of life is not included in the calculation]
   use: 460000 (range 394300 to 521800)
   total: 482000 (range 412500 to 552500)
-Assumptions: average power 3213.18 W, use time ratio 1, lifetime 35040 hours, grid carbon intensity 0.422 kg CO2eq/kWh, units 1.
+Assumptions: average power 3213.18 W (range 2768.12 to 3663.07), use time ratio 1, lifetime 35040 hours, grid carbon intensity 0.422 kg CO2eq/kWh, units 1.
 Note: Not specified, so taken from the archetype platfom_gpucompute_high: CPU, RAM, SSD.
 Note: Power supply, case, motherboard and assembly always come from the archetype.
 Source: BoaviztAPI 2.6.0 at https://api.boavizta.org

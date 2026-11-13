@@ -42,6 +42,11 @@ def number(value: float) -> str:
     return format(value, ".10g")
 
 
+def query_number(value: float) -> str:
+    """A number for a query string, without any rounding."""
+    return str(int(value)) if float(value).is_integer() else repr(float(value))
+
+
 def human_hours(hours: float) -> str:
     if hours == HOURS_PER_YEAR:
         return "1 year"
@@ -143,10 +148,19 @@ def format_estimate(result: EstimateResult) -> str:
         parts = []
         for assumption in shown:
             value = assumption.value
-            text = number(value) if isinstance(value, (int, float)) else str(value)
-            unit = assumption.unit
-            if unit and unit not in ("/1",):
-                text += f" {unit}"
+            unit = assumption.unit if assumption.unit not in (None, "/1") else None
+            suffix = f" {unit}" if unit else ""
+            if isinstance(value, (int, float)) and not isinstance(value, bool):
+                text = number(value) + suffix
+                low, high = assumption.min, assumption.max
+                if (
+                    low is not None
+                    and high is not None
+                    and (low, high) != (value, value)
+                ):
+                    text += f" (range {number(low)} to {number(high)})"
+            else:
+                text = str(value) + suffix
             parts.append(f"{assumption.name} {text}")
         lines.append(f"Assumptions: {', '.join(parts)}.")
     lines.extend(f"Note: {note}" for note in result.notes)

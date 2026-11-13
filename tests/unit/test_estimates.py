@@ -250,3 +250,22 @@ async def test_criteria_default_from_settings(replay: ReplayTransport) -> None:
     assert sent == [["pe"]]
     assert result.subject.name == "1x 512 GB SSD"
     assert result.impacts[0].total is not None
+
+
+async def test_empty_cpu_block_does_not_count_as_given(estimator: Estimator) -> None:
+    from boaviztapi_mcp.models import CpuSpec
+
+    prepared = await estimator.prepare(ServerRequest(cpu=CpuSpec()))
+    assert prepared.server_parts_given == set()
+    assert "configuration" not in prepared.body
+
+
+async def test_interpreted_names_are_noted(estimator: Estimator) -> None:
+    prepared = await estimator.prepare(
+        ComponentRequest(component="gpu", name="h100 sxm")
+    )
+    assert prepared.notes[0] == "GPU 'h100 sxm' was read as NVIDIA H100 SXM 80GB."
+    exact = await estimator.prepare(
+        ComponentRequest(component="gpu", name="nvidia h100 sxm 80gb")
+    )
+    assert not any("was read as" in note for note in exact.notes)

@@ -78,7 +78,7 @@ async def test_list_impact_criteria(session: mcp.Client) -> None:
 async def test_search_catalog(session: mcp.Client) -> None:
     result = await call(session, "search_catalog", {"kind": "gpu", "query": "h100"})
     assert result["total_matches"] == 3
-    assert result["summary"].startswith("3 gpu match: NVIDIA H100")
+    assert result["summary"].startswith("3 gpu matches: NVIDIA H100")
 
 
 async def test_describe_catalog_item(session: mcp.Client) -> None:

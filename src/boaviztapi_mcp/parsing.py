@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import math
 import re
-from collections.abc import Mapping
+from collections.abc import Mapping, Sequence
 from dataclasses import dataclass, field
 from typing import Any, TypeGuard
 
@@ -119,6 +119,31 @@ def parse_verbose(raw: Any) -> VerboseInfo:
     return info
 
 
+def merge_verbose(verboses: Sequence[Any]) -> Any:
+    """Combine verbose outputs of single-criterion calls into one.
+
+    Attributes come from the first response; per-component impacts are merged so
+    a breakdown covers every criterion that succeeded.
+    """
+    usable = [v for v in verboses if isinstance(v, Mapping)]
+    if not usable:
+        return None
+    merged: dict[str, Any] = {key: value for key, value in usable[0].items()}
+    for other in usable[1:]:
+        for key, value in other.items():
+            if not (COMPONENT_KEY.match(key) and isinstance(value, Mapping)):
+                continue
+            if key not in merged or not isinstance(merged[key], Mapping):
+                merged[key] = value
+                continue
+            impacts = {
+                **(merged[key].get("impacts") or {}),
+                **(value.get("impacts") or {}),
+            }
+            merged[key] = {**merged[key], "impacts": impacts}
+    return merged
+
+
 def assumptions(info: VerboseInfo, *, everything: bool) -> list[Assumption]:
     """Readable assumptions; only the key ones unless ``everything``."""
     result = []
@@ -139,6 +164,12 @@ def assumptions(info: VerboseInfo, *, everything: bool) -> list[Assumption]:
                 name=label,
                 value=_tidy(value),
                 unit=str(unit) if unit else None,
+                min=_tidy(attribute["min"])
+                if _is_number(attribute.get("min"))
+                else None,
+                max=_tidy(attribute["max"])
+                if _is_number(attribute.get("max"))
+                else None,
                 status=str(attribute["status"]) if attribute.get("status") else None,
                 source=str(attribute["source"]) if attribute.get("source") else None,
             )

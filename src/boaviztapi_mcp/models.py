@@ -162,6 +162,8 @@ class Assumption(BaseModel):
     name: str
     value: Any
     unit: str | None = None
+    min: float | None = None
+    max: float | None = None
     status: str | None = None
     source: str | None = None
 

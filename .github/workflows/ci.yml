@@ -48,3 +48,10 @@ jobs:
           uv venv /tmp/wheel-check
           uv pip install --python /tmp/wheel-check dist/*.whl
           /tmp/wheel-check/bin/boaviztapi-mcp --version
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - run: docker build -t boaviztapi-mcp:ci .
+      - run: docker run --rm boaviztapi-mcp:ci --version

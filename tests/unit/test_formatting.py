@@ -68,3 +68,10 @@ async def test_golden_summaries(client: BoaviztaClient, name: str) -> None:
         path.parent.mkdir(exist_ok=True)
         path.write_text(result.summary + "\n")
     assert result.summary + "\n" == path.read_text()
+
+
+def test_query_number_is_never_rounded() -> None:
+    from boaviztapi_mcp.formatting import query_number
+
+    assert query_number(8760.0) == "8760"
+    assert query_number(8760.123456789) == "8760.123456789"
