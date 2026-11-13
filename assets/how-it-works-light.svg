@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="300" viewBox="0 0 960 300" role="img" aria-labelledby="title desc">
+  <title id="title">How boaviztapi-mcp works</title>
+  <desc id="desc">An AI assistant calls boaviztapi-mcp over MCP. The server checks names, locations and criteria, then asks BoaviztAPI, and returns impacts with units, ranges and warnings.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#57606a"/>
+    </marker>
+  </defs>
+  <rect width="960" height="300" rx="16" fill="#ffffff"/>
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+    <!-- AI assistant -->
+    <rect x="24" y="70" width="230" height="160" rx="14" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+    <text x="139" y="112" text-anchor="middle" font-size="20" font-weight="600" fill="#1f2328">AI assistant</text>
+    <text x="139" y="142" text-anchor="middle" font-size="14" fill="#57606a">Claude, ChatGPT,</text>
+    <text x="139" y="162" text-anchor="middle" font-size="14" fill="#57606a">Cursor, opencode…</text>
+    <text x="139" y="200" text-anchor="middle" font-size="13" fill="#57606a" font-style="italic">"Footprint of 4 H100 SXM?"</text>
+
+    <!-- server -->
+    <rect x="345" y="40" width="270" height="220" rx="14" fill="#dafbe1" stroke="#1a7f37" stroke-width="2"/>
+    <text x="480" y="80" text-anchor="middle" font-size="20" font-weight="700" fill="#1f2328">boaviztapi-mcp</text>
+    <g font-size="14" fill="#1f2328">
+      <text x="370" y="118">✓ resolves exact names</text>
+      <text x="370" y="144">✓ checks locations &amp; criteria</text>
+      <text x="370" y="170">✓ caches, retries politely</text>
+      <text x="370" y="196">✓ explains period &amp; lifetime</text>
+      <text x="370" y="222">✓ never turns "no data" into 0</text>
+    </g>
+
+    <!-- BoaviztAPI -->
+    <rect x="706" y="70" width="230" height="160" rx="14" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1.5"/>
+    <text x="821" y="112" text-anchor="middle" font-size="20" font-weight="600" fill="#1f2328">BoaviztAPI</text>
+    <text x="821" y="142" text-anchor="middle" font-size="14" fill="#57606a">impact models and data</text>
+    <text x="821" y="162" text-anchor="middle" font-size="14" fill="#57606a">by Boavizta</text>
+    <text x="821" y="200" text-anchor="middle" font-size="13" fill="#57606a">public or self-hosted</text>
+
+    <!-- arrows -->
+    <g stroke="#57606a" stroke-width="2" fill="none">
+      <path d="M258 126H340" marker-end="url(#arrow)"/>
+      <path d="M340 176H258" marker-end="url(#arrow)"/>
+      <path d="M619 126H701" marker-end="url(#arrow)"/>
+      <path d="M701 176H619" marker-end="url(#arrow)"/>
+    </g>
+    <g font-size="12" fill="#57606a" text-anchor="middle">
+      <text x="299" y="116">MCP call</text>
+      <text x="299" y="198">units, ranges,</text>
+      <text x="299" y="214">warnings</text>
+      <text x="660" y="116">HTTPS</text>
+      <text x="660" y="198">impacts</text>
+    </g>
+  </g>
+</svg>
