@@ -1,0 +1,56 @@
+{
+ "request": {
+  "method": "GET",
+  "path": "/v1/utils/name_to_cpu",
+  "params": [
+   [
+    "cpu_name",
+    "Intel Xeon Gold 6134"
+   ]
+  ],
+  "body": null
+ },
+ "status": 200,
+ "json": {
+  "units": null,
+  "usage": {
+   "use_time_ratio": null,
+   "hours_life_time": null,
+   "avg_power": null,
+   "time_workload": null,
+   "usage_location": null,
+   "elec_factors": {
+    "gwp": null,
+    "adp": null,
+    "pe": null,
+    "gwppb": null,
+    "gwppf": null,
+    "gwpplu": null,
+    "ir": null,
+    "lu": null,
+    "odp": null,
+    "pm": null,
+    "pocp": null,
+    "wu": null,
+    "mips": null,
+    "adpe": null,
+    "adpf": null,
+    "ap": null,
+    "ctue": null,
+    "ctuh_c": null,
+    "ctuh_nc": null,
+    "epf": null,
+    "epm": null,
+    "ept": null
+   }
+  },
+  "core_units": null,
+  "die_size": 694.0,
+  "die_size_per_core": null,
+  "manufacturer": "Intel",
+  "model_range": "Xeon Gold",
+  "family": "Skylake",
+  "name": "Intel Xeon Gold 6134",
+  "tdp": null
+ }
+}

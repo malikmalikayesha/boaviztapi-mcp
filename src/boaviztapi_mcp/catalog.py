@@ -443,3 +443,70 @@ def _strings(raw: Any, what: str) -> list[str]:
     if not isinstance(raw, list):
         raise UnexpectedResponse(f"BoaviztAPI returned an unexpected list of {what}.")
     return [str(item) for item in raw]
+
+
+DescribeKind = Literal[
+    "cloud_instance", "server_archetype", "device_archetype", "gpu", "cpu"
+]
+
+
+async def describe(
+    catalog: Catalog,
+    kind: DescribeKind,
+    name: str,
+    *,
+    provider: str | None = None,
+    device_type: str | None = None,
+) -> tuple[str, dict[str, Any]]:
+    """Return the exact name and the API's configuration for one catalog item."""
+    client = catalog.client
+    if kind == "cloud_instance":
+        if not provider:
+            raise InputError("Describing a cloud instance needs a provider.")
+        provider = await catalog.resolve_provider(provider)
+        resolved = await catalog.resolve_instance(provider, name)
+        raw = await client.get(
+            "/v1/cloud/instance/instance_config",
+            [("provider", provider), ("instance_type", resolved)],
+        )
+        return f"{provider} {resolved}", tidy_config(raw)
+    if kind == "server_archetype":
+        resolved = await catalog.resolve_server_archetype(name)
+        raw = await client.get("/v1/server/archetype_config", [("archetype", resolved)])
+        return resolved, tidy_config(raw)
+    if kind == "device_archetype":
+        if not device_type:
+            raise InputError("Describing a device archetype needs a device_type.")
+        family = device_family(device_type)
+        resolved = await catalog.resolve_device_archetype(device_type, name)
+        raw = await client.get(
+            f"/v1/{family}/{device_type}/archetype_config", [("archetype", resolved)]
+        )
+        return resolved, tidy_config(raw)
+    if kind == "gpu":
+        resolved = await catalog.resolve_gpu(name)
+        raw = await client.get("/v1/utils/name_to_gpu", [("gpu_name", resolved)])
+        return resolved, tidy_config(raw)
+    resolved = await catalog.resolve_cpu(name)
+    raw = await client.get("/v1/utils/name_to_cpu", [("cpu_name", resolved)])
+    return resolved, tidy_config(raw)
+
+
+def tidy_config(raw: Any) -> dict[str, Any]:
+    """Drop empty values and collapse ``{"default": x}`` to ``x``."""
+    if not isinstance(raw, dict):
+        raise UnexpectedResponse(f"BoaviztAPI returned {raw!r} instead of details.")
+    cleaned = _tidy(raw)
+    return cleaned if isinstance(cleaned, dict) else {}
+
+
+def _tidy(value: Any) -> Any:
+    if isinstance(value, dict):
+        items = {k: _tidy(v) for k, v in value.items()}
+        items = {k: v for k, v in items.items() if v not in (None, {}, [])}
+        if set(items) == {"default"}:
+            return items["default"]
+        return items
+    if isinstance(value, list):
+        return [_tidy(v) for v in value]
+    return value

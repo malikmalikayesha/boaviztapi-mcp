@@ -1,0 +1,105 @@
+{
+ "request": {
+  "method": "GET",
+  "path": "/v1/server/archetype_config",
+  "params": [
+   [
+    "archetype",
+    "platform_compute_medium"
+   ]
+  ],
+  "body": null
+ },
+ "status": 200,
+ "json": {
+  "manufacturer": {},
+  "CASE": {
+   "case_type": {
+    "default": "rack"
+   }
+  },
+  "CPU": {
+   "units": {
+    "default": 2.0
+   },
+   "core_units": {
+    "default": 24.0,
+    "min": 16.0,
+    "max": 48.0
+   },
+   "die_size_per_core": {},
+   "name": {},
+   "threads": {}
+  },
+  "RAM": {
+   "units": {
+    "default": 8.0,
+    "min": 6.0,
+    "max": 10.0
+   },
+   "capacity": {
+    "default": 32.0
+   }
+  },
+  "SSD": {
+   "units": {
+    "default": 1.0,
+    "min": 1.0,
+    "max": 2.0
+   },
+   "capacity": {
+    "default": 1000.0
+   }
+  },
+  "HDD": {
+   "units": {
+    "default": 0.0
+   },
+   "capacity": {
+    "default": 0.0
+   }
+  },
+  "GPU": {
+   "units": {
+    "default": 0.0
+   },
+   "name": {},
+   "vram": {
+    "default": 0.0
+   }
+  },
+  "POWER_SUPPLY": {
+   "units": {
+    "default": 2.0,
+    "min": 2.0,
+    "max": 2.0
+   },
+   "unit_weight": {
+    "default": 2.99,
+    "min": 1.0,
+    "max": 5.0
+   }
+  },
+  "USAGE": {
+   "time_workload": {
+    "default": 50.0,
+    "min": 0.0,
+    "max": 100.0
+   },
+   "use_time_ratio": {
+    "default": 1.0
+   },
+   "hours_life_time": {
+    "default": 35040.0
+   },
+   "other_consumption_ratio": {
+    "default": 0.33,
+    "min": 0.2,
+    "max": 0.6
+   }
+  },
+  "WARNINGS": {
+   "default": "Using generic compute platform"
+  }
+ }
+}

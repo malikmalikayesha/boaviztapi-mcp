@@ -1,0 +1,38 @@
+{
+ "request": {
+  "method": "GET",
+  "path": "/v1/terminal/laptop/archetype_config",
+  "params": [
+   [
+    "archetype",
+    "laptop-pro"
+   ]
+  ],
+  "body": null
+ },
+ "status": 200,
+ "json": {
+  "router_type": {
+   "default": "terminal"
+  },
+  "device_type": {
+   "default": "laptop"
+  },
+  "type": {
+   "default": "pro"
+  },
+  "USAGE": {
+   "use_time_ratio": {
+    "default": 0.3
+   },
+   "hours_life_time": {
+    "default": 35040.0
+   },
+   "avg_power": {
+    "default": 75.0,
+    "min": 50.0,
+    "max": 100.0
+   }
+  }
+ }
+}

@@ -1,0 +1,39 @@
+{
+ "request": {
+  "method": "GET",
+  "path": "/v1/cloud/instance/instance_config",
+  "params": [
+   [
+    "instance_type",
+    "m5.xlarge"
+   ],
+   [
+    "provider",
+    "aws"
+   ]
+  ],
+  "body": null
+ },
+ "status": 200,
+ "json": {
+  "vcpu": {
+   "default": 4.0
+  },
+  "memory": {
+   "default": 16.0
+  },
+  "ssd_storage": {
+   "default": 0.0
+  },
+  "hdd_storage": {
+   "default": 0.0
+  },
+  "gpu_units": {
+   "default": 0.0
+  },
+  "platform": {
+   "default": "m5.metal"
+  },
+  "source": {}
+ }
+}
