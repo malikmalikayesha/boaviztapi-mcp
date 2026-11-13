@@ -6,6 +6,21 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.1.1]
+
+### Changed
+
+- Every tool description now says when to use the tool and which tool to use
+  instead, how its key inputs interact, and what a call does (one read-only,
+  cached BoaviztAPI request; partial upstream failures still return the other
+  criteria).
+
+### Added
+
+- Server icon (`assets/icon.svg`, `assets/icon.png`), advertised to MCP clients and
+  in the MCP Registry entry.
+- Glama score badge in the README and a Dependabot configuration.
+
 ## [0.1.0]
 
 ### Added
@@ -27,5 +42,6 @@ All notable changes to this project are documented here. The format follows
 - Documentation: README with privacy, limitations and troubleshooting sections, a
   generated tool reference (`docs/tools.md`), contributing guide and security policy.
 
-[Unreleased]: https://github.com/malikmalikayesha/boaviztapi-mcp/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/malikmalikayesha/boaviztapi-mcp/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/malikmalikayesha/boaviztapi-mcp/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/malikmalikayesha/boaviztapi-mcp/releases/tag/v0.1.0
