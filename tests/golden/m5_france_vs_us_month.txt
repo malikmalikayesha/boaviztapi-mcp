@@ -1,0 +1,16 @@
+Comparison over 730 h (1 month):
+- France: aws m5.xlarge, over 730 h (1 month), in France (FRA)
+- United States: aws m5.xlarge, over 730 h (1 month), in United States (USA)
+gwp (kgCO2eq):
+  France: total 2.27 (range 0.7345 to 3.722)
+  United States: total 6.77 (range 1.7 to 10.96), +198.2% vs France
+  Lowest: France, but the ranges overlap, so the ranking is not certain within BoaviztAPI's uncertainty.
+adp (kgSbeq):
+  France: total 8.98e-05 (range 6.485e-05 to 0.0001252)
+  United States: total 9.06e-05 (range 6.503e-05 to 0.0001265), +0.9% vs France
+  Lowest: France, but the ranges overlap, so the ranking is not certain within BoaviztAPI's uncertainty.
+pe (MJ):
+  France: total 198.8 (range 45.14 to 315)
+  United States: total 198.8 (range 45.39 to 316.8), +0.0% vs France
+  Lowest: France, but the ranges overlap, so the ranking is not certain within BoaviztAPI's uncertainty.
+Source: BoaviztAPI 2.6.0 at https://api.boavizta.org

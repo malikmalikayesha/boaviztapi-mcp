@@ -1,0 +1,17 @@
+4x NVIDIA H100 SXM 80GB, over 8760 h (1 year), in Germany (DEU)
+Embedded = the share of manufacturing allocated to 8760 h of a 26280 h lifetime.
+gwp, Total climate change (kgCO2eq):
+  embedded: 766.8
+  use: 7100 (range 1035 to 10350)
+  total: 7867 (range 1802 to 11120)
+adp, Use of minerals and fossil ressources (kgSbeq):
+  embedded: 0.007776
+  use: 0.0015 (range 0.0002155 to 0.002155)
+  total: 0.009276 (range 0.007992 to 0.009931)
+pe, Consumption of primary energy (MJ):
+  embedded: 10550
+  use: 270000 (range 39880 to 398800)
+  total: 280600 (range 50430 to 409400)
+Assumptions: units 4, TDP 700 W, average power 479.5 W, load 65 %, use time ratio 1, lifetime 26280 hours, grid carbon intensity 0.422 kg CO2eq/kWh.
+Note: GPU only; the host server is not included. Use estimate_server with a gpu block for a whole system.
+Source: BoaviztAPI 2.6.0 at https://api.boavizta.org

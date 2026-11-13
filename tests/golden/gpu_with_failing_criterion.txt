@@ -1,0 +1,14 @@
+1x NVIDIA H100 SXM 80GB, over its full lifetime (26280 h), with the default electricity mix (EEE)
+Embedded = the full manufacturing impact.
+gwp, Total climate change (kgCO2eq):
+  embedded: 575.1
+  use: 5000 (range 42.31 to 20820)
+  total: 5575 (range 617.4 to 21400)
+adpe, Use of mineral and metal resources (kg SB eq.):
+  embedded: BoaviztAPI failed for this criterion (HTTP 500)
+  use: BoaviztAPI failed for this criterion (HTTP 500)
+Assumptions: units 1, TDP 700 W, average power 479.5 W, load 65 %, use time ratio 1, lifetime 26280 hours, grid carbon intensity 0.38 kg CO2eq/kWh.
+Note: GPU only; the host server is not included. Use estimate_server with a gpu block for a whole system.
+Note: No location given: the use phase uses BoaviztAPI's default electricity mix (EEE, Europe), so its range is wide. Pass usage_location for a country-specific figure.
+Note: BoaviztAPI failed (HTTP 500) for: adpe. The other criteria are unaffected.
+Source: BoaviztAPI 2.6.0 at https://api.boavizta.org

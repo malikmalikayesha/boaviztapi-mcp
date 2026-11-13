@@ -1,0 +1,232 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/v1/component/ram",
+  "params": [
+   [
+    "criteria",
+    "adp"
+   ],
+   [
+    "criteria",
+    "gwp"
+   ],
+   [
+    "criteria",
+    "pe"
+   ],
+   [
+    "duration",
+    "8760"
+   ],
+   [
+    "verbose",
+    "true"
+   ]
+  ],
+  "body": {
+   "units": 1,
+   "capacity": 64,
+   "usage": {
+    "usage_location": "FRA"
+   }
+  }
+ },
+ "status": 200,
+ "json": {
+  "impacts": {
+   "gwp": {
+    "unit": "kgCO2eq",
+    "description": "Total climate change",
+    "embedded": {
+     "value": 39.0,
+     "min": 21.5,
+     "max": 76.83,
+     "warnings": [
+      "End of life is not included in the calculation"
+     ]
+    },
+    "use": {
+     "value": 4.8,
+     "min": 3.918,
+     "max": 5.597
+    }
+   },
+   "adp": {
+    "unit": "kgSbeq",
+    "description": "Use of minerals and fossil ressources",
+    "embedded": {
+     "value": 0.0016,
+     "min": 0.001129,
+     "max": 0.002714,
+     "warnings": [
+      "End of life is not included in the calculation"
+     ]
+    },
+    "use": {
+     "value": 2.36e-06,
+     "min": 1.942e-06,
+     "max": 2.775e-06
+    }
+   },
+   "pe": {
+    "unit": "MJ",
+    "description": "Consumption of primary energy",
+    "embedded": {
+     "value": 490.0,
+     "min": 269.9,
+     "max": 956.5,
+     "warnings": [
+      "End of life is not included in the calculation"
+     ]
+    },
+    "use": {
+     "value": 550.0,
+     "min": 451.3,
+     "max": 644.8
+    }
+   }
+  },
+  "verbose": {
+   "impacts": {
+    "gwp": {
+     "unit": "kgCO2eq",
+     "description": "Total climate change",
+     "embedded": {
+      "value": 39.0,
+      "min": 21.5,
+      "max": 76.83,
+      "warnings": [
+       "End of life is not included in the calculation"
+      ]
+     },
+     "use": {
+      "value": 4.8,
+      "min": 3.918,
+      "max": 5.597
+     }
+    },
+    "adp": {
+     "unit": "kgSbeq",
+     "description": "Use of minerals and fossil ressources",
+     "embedded": {
+      "value": 0.0016,
+      "min": 0.001129,
+      "max": 0.002714,
+      "warnings": [
+       "End of life is not included in the calculation"
+      ]
+     },
+     "use": {
+      "value": 2.36e-06,
+      "min": 1.942e-06,
+      "max": 2.775e-06
+     }
+    },
+    "pe": {
+     "unit": "MJ",
+     "description": "Consumption of primary energy",
+     "embedded": {
+      "value": 490.0,
+      "min": 269.9,
+      "max": 956.5,
+      "warnings": [
+       "End of life is not included in the calculation"
+      ]
+     },
+     "use": {
+      "value": 550.0,
+      "min": 451.3,
+      "max": 644.8
+     }
+    }
+   },
+   "units": {
+    "value": 1,
+    "status": "INPUT"
+   },
+   "capacity": {
+    "value": 64,
+    "status": "INPUT",
+    "unit": "GB"
+   },
+   "density": {
+    "value": 1.2443636363636363,
+    "status": "COMPLETED",
+    "unit": "GB/cm2",
+    "source": "Average of 11 rows",
+    "min": 0.625,
+    "max": 2.375
+   },
+   "duration": {
+    "value": 8760.0,
+    "unit": "hours"
+   },
+   "avg_power": {
+    "value": 5.542,
+    "status": "COMPLETED",
+    "unit": "W",
+    "min": 4.564,
+    "max": 6.52
+   },
+   "time_workload": {
+    "value": 50.0,
+    "status": "ARCHETYPE",
+    "unit": "%",
+    "min": 0.0,
+    "max": 100.0
+   },
+   "usage_location": {
+    "value": "FRA",
+    "status": "INPUT",
+    "unit": "CodSP3 - NCS Country Codes - NATO"
+   },
+   "use_time_ratio": {
+    "value": 1.0,
+    "status": "ARCHETYPE",
+    "unit": "/1",
+    "min": 1.0,
+    "max": 1.0
+   },
+   "hours_life_time": {
+    "value": 26280.0,
+    "status": "ARCHETYPE",
+    "unit": "hours",
+    "min": 26280.0,
+    "max": 26280.0
+   },
+   "params": {
+    "value": {
+     "a": 6.52,
+     "idle_ratio": 0.7
+    },
+    "status": "COMPLETED",
+    "source": "((dimm_base_power: 3.0) + (dimm_power_per_gb: 0.055) * (ram_capacity: 64)) * ((idle_ratio: 0.7) + (1 - idle_ratio) * workload / 100)"
+   },
+   "gwp_factor": {
+    "value": 0.098,
+    "status": "COMPLETED",
+    "unit": "kg CO2eq/kWh",
+    "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149",
+    "min": 0.098,
+    "max": 0.098
+   },
+   "adp_factor": {
+    "value": 4.85798e-08,
+    "status": "COMPLETED",
+    "unit": "kg Sbeq/kWh",
+    "source": "ADEME Base IMPACTS ®",
+    "min": 4.85798e-08,
+    "max": 4.85798e-08
+   },
+   "pe_factor": {
+    "value": 11.289,
+    "status": "COMPLETED",
+    "unit": "MJ/kWh",
+    "source": "ADPf / (1-%renewable_energy)",
+    "min": 11.289,
+    "max": 11.289
+   }
+  }
+ }
+}

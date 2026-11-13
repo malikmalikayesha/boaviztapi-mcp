@@ -1,0 +1,13 @@
+iot device (smart_watch), over its full lifetime (35040 h)
+Embedded = the full manufacturing impact.
+gwp, Total climate change (kgCO2eq):
+  embedded: 19.82 [warning: Connected object, not including associated digital services (use of network, datacenter, virtual machines or other terminals not included)] [warning: Do not include the impact of distribution]
+  use: not available from BoaviztAPI for this item
+adp, Use of minerals and fossil ressources (kgSbeq):
+  embedded: not available from BoaviztAPI for this item
+  use: not available from BoaviztAPI for this item
+pe, Consumption of primary energy (MJ):
+  embedded: 277.6 [warning: Connected object, not including associated digital services (use of network, datacenter, virtual machines or other terminals not included)] [warning: Do not include the impact of distribution]
+  use: not available from BoaviztAPI for this item
+Assumptions: lifetime 35040 hours, units 1.
+Source: BoaviztAPI 2.6.0 at https://api.boavizta.org

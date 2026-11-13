@@ -1,0 +1,15 @@
+laptop (default archetype), over its full lifetime (35040 h), with the default electricity mix (EEE)
+Embedded = the full manufacturing impact.
+gwp, Total climate change (kgCO2eq):
+  embedded: 181 [warning: Generic data used for impact calculation]
+  use: 300 (range 12.09 to 1190)
+  total: 481 (range 193.1 to 1371)
+adp, Use of minerals and fossil ressources (kgSbeq):
+  embedded: not available from BoaviztAPI for this item
+  use: 5e-05 (range 6.959e-06 to 0.0002792)
+pe, Consumption of primary energy (MJ):
+  embedded: not available from BoaviztAPI for this item
+  use: 10000 (range 6.833 to 492100)
+Assumptions: average power 75 W, use time ratio 0.3, lifetime 35040 hours, grid carbon intensity 0.38 kg CO2eq/kWh, type pro, units 1.
+Note: No location given: the use phase uses BoaviztAPI's default electricity mix (EEE, Europe), so its range is wide. Pass usage_location for a country-specific figure.
+Source: BoaviztAPI 2.6.0 at https://api.boavizta.org

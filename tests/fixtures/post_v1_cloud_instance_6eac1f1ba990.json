@@ -1,0 +1,746 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/v1/cloud/instance",
+  "params": [
+   [
+    "criteria",
+    "adp"
+   ],
+   [
+    "criteria",
+    "gwp"
+   ],
+   [
+    "criteria",
+    "pe"
+   ],
+   [
+    "duration",
+    "730"
+   ],
+   [
+    "verbose",
+    "true"
+   ]
+  ],
+  "body": {
+   "provider": "aws",
+   "instance_type": "m5.xlarge",
+   "usage": {
+    "usage_location": "FRA"
+   }
+  }
+ },
+ "status": 200,
+ "json": {
+  "impacts": {
+   "gwp": {
+    "unit": "kgCO2eq",
+    "description": "Total climate change",
+    "embedded": {
+     "value": 0.67,
+     "min": 0.3867,
+     "max": 1.113,
+     "warnings": [
+      "End of life is not included in the calculation"
+     ]
+    },
+    "use": {
+     "value": 1.6,
+     "min": 0.3478,
+     "max": 2.609
+    }
+   },
+   "adp": {
+    "unit": "kgSbeq",
+    "description": "Use of minerals and fossil ressources",
+    "embedded": {
+     "value": 8.9e-05,
+     "min": 6.468e-05,
+     "max": 0.0001239,
+     "warnings": [
+      "End of life is not included in the calculation"
+     ]
+    },
+    "use": {
+     "value": 8e-07,
+     "min": 1.724e-07,
+     "max": 1.294e-06
+    }
+   },
+   "pe": {
+    "unit": "MJ",
+    "description": "Consumption of primary energy",
+    "embedded": {
+     "value": 8.8,
+     "min": 5.079,
+     "max": 14.42,
+     "warnings": [
+      "End of life is not included in the calculation"
+     ]
+    },
+    "use": {
+     "value": 190.0,
+     "min": 40.06,
+     "max": 300.6
+    }
+   }
+  },
+  "verbose": {
+   "vcpu": {
+    "value": 4.0,
+    "status": "ARCHETYPE"
+   },
+   "memory": {
+    "value": 16.0,
+    "status": "ARCHETYPE",
+    "unit": "GB"
+   },
+   "avg_power": {
+    "value": 22.591823333333338,
+    "status": "COMPLETED",
+    "unit": "W",
+    "min": 4.861299999999999,
+    "max": 36.47599999999999
+   },
+   "usage_location": {
+    "value": "FRA",
+    "status": "INPUT",
+    "unit": "CodSP3 - NCS Country Codes - NATO"
+   },
+   "duration": {
+    "value": 730.0,
+    "unit": "hours"
+   },
+   "ASSEMBLY-1": {
+    "impacts": {
+     "gwp": {
+      "unit": "kgCO2eq",
+      "description": "Total climate change",
+      "embedded": {
+       "value": 0.003866,
+       "min": 0.003866,
+       "max": 0.003866,
+       "warnings": [
+        "End of life is not included in the calculation"
+       ]
+      },
+      "use": "not implemented"
+     },
+     "adp": {
+      "unit": "kgSbeq",
+      "description": "Use of minerals and fossil ressources",
+      "embedded": {
+       "value": 8.16e-10,
+       "min": 8.16e-10,
+       "max": 8.16e-10,
+       "warnings": [
+        "End of life is not included in the calculation"
+       ]
+      },
+      "use": "not implemented"
+     },
+     "pe": {
+      "unit": "MJ",
+      "description": "Consumption of primary energy",
+      "embedded": {
+       "value": 0.0397,
+       "min": 0.0397,
+       "max": 0.0397,
+       "warnings": [
+        "End of life is not included in the calculation"
+       ]
+      },
+      "use": "not implemented"
+     }
+    },
+    "units": {
+     "value": 1,
+     "status": "ARCHETYPE",
+     "min": 1,
+     "max": 1
+    },
+    "duration": {
+     "value": 730.0,
+     "unit": "hours"
+    }
+   },
+   "CPU-1": {
+    "impacts": {
+     "gwp": {
+      "unit": "kgCO2eq",
+      "description": "Total climate change",
+      "embedded": {
+       "value": 0.0246,
+       "min": 0.0246,
+       "max": 0.0246,
+       "warnings": [
+        "End of life is not included in the calculation"
+       ]
+      },
+      "use": {
+       "value": 1.1,
+       "min": 0.1706,
+       "max": 1.461
+      }
+     },
+     "adp": {
+      "unit": "kgSbeq",
+      "description": "Use of minerals and fossil ressources",
+      "embedded": {
+       "value": 2.362e-05,
+       "min": 2.362e-05,
+       "max": 2.362e-05,
+       "warnings": [
+        "End of life is not included in the calculation"
+       ]
+      },
+      "use": {
+       "value": 5.3e-07,
+       "min": 8.458e-08,
+       "max": 7.241e-07
+      }
+     },
+     "pe": {
+      "unit": "MJ",
+      "description": "Consumption of primary energy",
+      "embedded": {
+       "value": 0.3692,
+       "min": 0.3692,
+       "max": 0.3692,
+       "warnings": [
+        "End of life is not included in the calculation"
+       ]
+      },
+      "use": {
+       "value": 120.0,
+       "min": 19.66,
+       "max": 168.3
+      }
+     }
+    },
+    "units": {
+     "value": 2.0,
+     "status": "ARCHETYPE",
+     "min": 2.0,
+     "max": 2.0
+    },
+    "core_units": {
+     "value": 24,
+     "status": "COMPLETED",
+     "source": "Completed from name name based on https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
+     "min": 24,
+     "max": 24
+    },
+    "die_size": {
+     "value": 615,
+     "status": "COMPLETED",
+     "unit": "mm2",
+     "source": "Linear regression of cpu_manufacture : Completed from name name based on https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
+     "min": 615,
+     "max": 615
+    },
+    "model_range": {
+     "value": "Xeon Platinum",
+     "status": "COMPLETED",
+     "source": "Completed from name name based on https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
+     "min": "Xeon Platinum",
+     "max": "Xeon Platinum"
+    },
+    "manufacturer": {
+     "value": "Intel",
+     "status": "COMPLETED",
+     "source": "Completed from name name based on https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
+     "min": "Intel",
+     "max": "Intel"
+    },
+    "family": {
+     "value": "Skylake",
+     "status": "COMPLETED",
+     "source": "Completed from name name based on https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
+     "min": "Skylake",
+     "max": "Skylake"
+    },
+    "name": {
+     "value": "Intel Xeon Platinum 8175M",
+     "status": "COMPLETED",
+     "source": "fuzzy match",
+     "min": "Intel Xeon Platinum 8175M",
+     "max": "Intel Xeon Platinum 8175M"
+    },
+    "tdp": {
+     "value": 240,
+     "status": "COMPLETED",
+     "unit": "W",
+     "source": "Completed from name name based on https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
+     "min": 240,
+     "max": 240
+    },
+    "threads": {
+     "value": 48,
+     "status": "COMPLETED",
+     "source": "Completed from name name based on https://docs.google.com/spreadsheets/d/1DqYgQnEDLQVQm5acMAhLgHLD8xXCG9BIrk-_Nv6jF3k/edit#gid=224728652.",
+     "min": 48,
+     "max": 48
+    },
+    "duration": {
+     "value": 730.0,
+     "unit": "hours"
+    },
+    "avg_power": {
+     "value": 14.963333333333333,
+     "status": "COMPLETED",
+     "unit": "W",
+     "min": 2.385083333333333,
+     "max": 20.417499999999997
+    },
+    "time_workload": {
+     "value": 50.0,
+     "status": "ARCHETYPE",
+     "unit": "%",
+     "min": 0.0,
+     "max": 100.0
+    },
+    "usage_location": {
+     "value": "FRA",
+     "status": "INPUT",
+     "unit": "CodSP3 - NCS Country Codes - NATO"
+    },
+    "use_time_ratio": {
+     "value": 1.0,
+     "status": "ARCHETYPE",
+     "unit": "/1",
+     "min": 1.0,
+     "max": 1.0
+    },
+    "hours_life_time": {
+     "value": 52560.0,
+     "status": "COMPLETED",
+     "unit": "hours",
+     "source": "from device",
+     "min": 52560.0,
+     "max": 52560.0
+    },
+    "workloads": {
+     "value": [
+      {
+       "load_percentage": 0,
+       "power_watt": 28.799999999999997
+      },
+      {
+       "load_percentage": 10,
+       "power_watt": 76.8
+      },
+      {
+       "load_percentage": 50,
+       "power_watt": 180.0
+      },
+      {
+       "load_percentage": 100,
+       "power_watt": 244.8
+      }
+     ],
+     "status": "COMPLETED",
+     "unit": "workload_rate:W"
+    },
+    "params": {
+     "value": {
+      "a": 122.0350418177328,
+      "b": 0.06408783185273052,
+      "c": 20.451103224374883,
+      "d": -4.394060134871494
+     },
+     "status": "COMPLETED",
+     "source": "From TDP"
+    },
+    "gwp_factor": {
+     "value": 0.098,
+     "status": "COMPLETED",
+     "unit": "kg CO2eq/kWh",
+     "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149",
+     "min": 0.098,
+     "max": 0.098
+    },
+    "adp_factor": {
+     "value": 4.85798e-08,
+     "status": "COMPLETED",
+     "unit": "kg Sbeq/kWh",
+     "source": "ADEME Base IMPACTS ®",
+     "min": 4.85798e-08,
+     "max": 4.85798e-08
+    },
+    "pe_factor": {
+     "value": 11.289,
+     "status": "COMPLETED",
+     "unit": "MJ/kWh",
+     "source": "ADPf / (1-%renewable_energy)",
+     "min": 11.289,
+     "max": 11.289
+    }
+   },
+   "RAM-1": {
+    "impacts": {
+     "gwp": {
+      "unit": "kgCO2eq",
+      "description": "Total climate change",
+      "embedded": {
+       "value": 0.43,
+       "min": 0.2421,
+       "max": 0.8185,
+       "warnings": [
+        "End of life is not included in the calculation"
+       ]
+      },
+      "use": {
+       "value": 0.145,
+       "min": 0.1192,
+       "max": 0.1703
+      }
+     },
+     "adp": {
+      "unit": "kgSbeq",
+      "description": "Use of minerals and fossil ressources",
+      "embedded": {
+       "value": 2.3e-05,
+       "min": 1.763e-05,
+       "max": 3.414e-05,
+       "warnings": [
+        "End of life is not included in the calculation"
+       ]
+      },
+      "use": {
+       "value": 7.2e-08,
+       "min": 5.908e-08,
+       "max": 8.44e-08
+      }
+     },
+     "pe": {
+      "unit": "MJ",
+      "description": "Consumption of primary energy",
+      "embedded": {
+       "value": 5.4,
+       "min": 3.068,
+       "max": 10.22,
+       "warnings": [
+        "End of life is not included in the calculation"
+       ]
+      },
+      "use": {
+       "value": 16.7,
+       "min": 13.73,
+       "max": 19.61
+      }
+     }
+    },
+    "units": {
+     "value": 12.0,
+     "status": "ARCHETYPE",
+     "min": 12.0,
+     "max": 12.0
+    },
+    "capacity": {
+     "value": 32.0,
+     "status": "ARCHETYPE",
+     "unit": "GB",
+     "min": 32.0,
+     "max": 32.0
+    },
+    "density": {
+     "value": 1.2443636363636363,
+     "status": "COMPLETED",
+     "unit": "GB/cm2",
+     "source": "Average of 11 rows",
+     "min": 0.625,
+     "max": 2.375
+    },
+    "duration": {
+     "value": 730.0,
+     "unit": "hours"
+    },
+    "avg_power": {
+     "value": 2.023,
+     "status": "COMPLETED",
+     "unit": "W",
+     "min": 1.6659999999999997,
+     "max": 2.38
+    },
+    "time_workload": {
+     "value": 50.0,
+     "status": "ARCHETYPE",
+     "unit": "%",
+     "min": 0.0,
+     "max": 100.0
+    },
+    "usage_location": {
+     "value": "FRA",
+     "status": "INPUT",
+     "unit": "CodSP3 - NCS Country Codes - NATO"
+    },
+    "use_time_ratio": {
+     "value": 1.0,
+     "status": "ARCHETYPE",
+     "unit": "/1",
+     "min": 1.0,
+     "max": 1.0
+    },
+    "hours_life_time": {
+     "value": 52560.0,
+     "status": "COMPLETED",
+     "unit": "hours",
+     "source": "from device",
+     "min": 52560.0,
+     "max": 52560.0
+    },
+    "params": {
+     "value": {
+      "a": 4.76,
+      "idle_ratio": 0.7
+     },
+     "status": "COMPLETED",
+     "source": "((dimm_base_power: 3.0) + (dimm_power_per_gb: 0.055) * (ram_capacity: 32)) * ((idle_ratio: 0.7) + (1 - idle_ratio) * workload / 100)"
+    },
+    "gwp_factor": {
+     "value": 0.098,
+     "status": "COMPLETED",
+     "unit": "kg CO2eq/kWh",
+     "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149",
+     "min": 0.098,
+     "max": 0.098
+    },
+    "adp_factor": {
+     "value": 4.85798e-08,
+     "status": "COMPLETED",
+     "unit": "kg Sbeq/kWh",
+     "source": "ADEME Base IMPACTS ®",
+     "min": 4.85798e-08,
+     "max": 4.85798e-08
+    },
+    "pe_factor": {
+     "value": 11.289,
+     "status": "COMPLETED",
+     "unit": "MJ/kWh",
+     "source": "ADPf / (1-%renewable_energy)",
+     "min": 11.289,
+     "max": 11.289
+    }
+   },
+   "POWER_SUPPLY-1": {
+    "impacts": {
+     "gwp": {
+      "unit": "kgCO2eq",
+      "description": "Total climate change",
+      "embedded": {
+       "value": 0.08,
+       "min": 0.02812,
+       "max": 0.1406,
+       "warnings": [
+        "End of life is not included in the calculation"
+       ]
+      },
+      "use": "not implemented"
+     },
+     "adp": {
+      "unit": "kgSbeq",
+      "description": "Use of minerals and fossil ressources",
+      "embedded": {
+       "value": 2.9e-05,
+       "min": 9.606e-06,
+       "max": 4.803e-05,
+       "warnings": [
+        "End of life is not included in the calculation"
+       ]
+      },
+      "use": "not implemented"
+     },
+     "pe": {
+      "unit": "MJ",
+      "description": "Consumption of primary energy",
+      "embedded": {
+       "value": 1.2,
+       "min": 0.4074,
+       "max": 2.037,
+       "warnings": [
+        "End of life is not included in the calculation"
+       ]
+      },
+      "use": "not implemented"
+     }
+    },
+    "units": {
+     "value": 2.0,
+     "status": "ARCHETYPE",
+     "min": 2.0,
+     "max": 2.0
+    },
+    "unit_weight": {
+     "value": 2.99,
+     "status": "ARCHETYPE",
+     "unit": "kg",
+     "min": 1.0,
+     "max": 5.0
+    },
+    "duration": {
+     "value": 730.0,
+     "unit": "hours"
+    }
+   },
+   "CASE-1": {
+    "impacts": {
+     "gwp": {
+      "unit": "kgCO2eq",
+      "description": "Total climate change",
+      "embedded": {
+       "value": 0.087,
+       "min": 0.04971,
+       "max": 0.08681,
+       "warnings": [
+        "End of life is not included in the calculation"
+       ]
+      },
+      "use": "not implemented"
+     },
+     "adp": {
+      "unit": "kgSbeq",
+      "description": "Use of minerals and fossil ressources",
+      "embedded": {
+       "value": 1.17e-05,
+       "min": 1.169e-05,
+       "max": 1.601e-05,
+       "warnings": [
+        "End of life is not included in the calculation"
+       ]
+      },
+      "use": "not implemented"
+     },
+     "pe": {
+      "unit": "MJ",
+      "description": "Consumption of primary energy",
+      "embedded": {
+       "value": 1.27,
+       "min": 0.7111,
+       "max": 1.273,
+       "warnings": [
+        "End of life is not included in the calculation"
+       ]
+      },
+      "use": "not implemented"
+     }
+    },
+    "units": {
+     "value": 1,
+     "status": "ARCHETYPE",
+     "min": 1,
+     "max": 1
+    },
+    "case_type": {
+     "value": "rack",
+     "status": "ARCHETYPE"
+    },
+    "duration": {
+     "value": 730.0,
+     "unit": "hours"
+    }
+   },
+   "MOTHERBOARD-1": {
+    "impacts": {
+     "gwp": {
+      "unit": "kgCO2eq",
+      "description": "Total climate change",
+      "embedded": {
+       "value": 0.03825,
+       "min": 0.03825,
+       "max": 0.03825,
+       "warnings": [
+        "End of life is not included in the calculation"
+       ]
+      },
+      "use": "not implemented"
+     },
+     "adp": {
+      "unit": "kgSbeq",
+      "description": "Use of minerals and fossil ressources",
+      "embedded": {
+       "value": 2.135e-06,
+       "min": 2.135e-06,
+       "max": 2.135e-06,
+       "warnings": [
+        "End of life is not included in the calculation"
+       ]
+      },
+      "use": "not implemented"
+     },
+     "pe": {
+      "unit": "MJ",
+      "description": "Consumption of primary energy",
+      "embedded": {
+       "value": 0.4838,
+       "min": 0.4838,
+       "max": 0.4838,
+       "warnings": [
+        "End of life is not included in the calculation"
+       ]
+      },
+      "use": "not implemented"
+     }
+    },
+    "units": {
+     "value": 1,
+     "status": "ARCHETYPE",
+     "min": 1,
+     "max": 1
+    },
+    "duration": {
+     "value": 730.0,
+     "unit": "hours"
+    }
+   },
+   "use_time_ratio": {
+    "value": 1.0,
+    "status": "ARCHETYPE",
+    "unit": "/1",
+    "min": 1.0,
+    "max": 1.0
+   },
+   "hours_life_time": {
+    "value": 52560.0,
+    "status": "COMPLETED",
+    "unit": "hours",
+    "source": "from device",
+    "min": 52560.0,
+    "max": 52560.0
+   },
+   "other_consumption_ratio": {
+    "value": 0.33,
+    "status": "ARCHETYPE",
+    "unit": "ratio /1",
+    "min": 0.2,
+    "max": 0.6
+   },
+   "gwp_factor": {
+    "value": 0.098,
+    "status": "COMPLETED",
+    "unit": "kg CO2eq/kWh",
+    "source": "https://www.sciencedirect.com/science/article/pii/S0306261921012149",
+    "min": 0.098,
+    "max": 0.098
+   },
+   "adp_factor": {
+    "value": 4.85798e-08,
+    "status": "COMPLETED",
+    "unit": "kg Sbeq/kWh",
+    "source": "ADEME Base IMPACTS ®",
+    "min": 4.85798e-08,
+    "max": 4.85798e-08
+   },
+   "pe_factor": {
+    "value": 11.289,
+    "status": "COMPLETED",
+    "unit": "MJ/kWh",
+    "source": "ADPf / (1-%renewable_energy)",
+    "min": 11.289,
+    "max": 11.289
+   }
+  }
+ }
+}

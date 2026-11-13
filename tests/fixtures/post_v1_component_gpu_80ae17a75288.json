@@ -1,0 +1,26 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/v1/component/gpu",
+  "params": [
+   [
+    "criteria",
+    "adpe"
+   ],
+   [
+    "criteria",
+    "gwp"
+   ],
+   [
+    "verbose",
+    "true"
+   ]
+  ],
+  "body": {
+   "units": 1,
+   "name": "NVIDIA H100 SXM 80GB"
+  }
+ },
+ "status": 500,
+ "text": "Internal Server Error"
+}

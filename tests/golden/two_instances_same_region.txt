@@ -1,0 +1,16 @@
+Comparison over 8760 h (1 year):
+- m5.xlarge: aws m5.xlarge, over 8760 h (1 year), in eu-west-3 (FRA)
+- c5.2xlarge: aws c5.2xlarge, over 8760 h (1 year), in eu-west-3 (FRA)
+gwp (kgCO2eq):
+  m5.xlarge: total 27.4 (range 22.14 to 36.68)
+  c5.2xlarge: total 61 (range 51.06 to 77.16), +122.6% vs m5.xlarge
+  Lowest: m5.xlarge (ranges do not overlap).
+adp (kgSbeq):
+  m5.xlarge: total 0.00108 (range 0.0007848 to 0.001499)
+  c5.2xlarge: total 0.002524 (range 0.001879 to 0.003453), +133.7% vs m5.xlarge
+  Lowest: m5.xlarge (ranges do not overlap).
+pe (MJ):
+  m5.xlarge: total 2340 (range 2077 to 2861)
+  c5.2xlarge: total 5680 (range 5081 to 6896), +142.7% vs m5.xlarge
+  Lowest: m5.xlarge (ranges do not overlap).
+Source: BoaviztAPI 2.6.0 at https://api.boavizta.org
