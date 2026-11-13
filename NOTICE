@@ -1,0 +1,13 @@
+boaviztapi-mcp
+Copyright 2026 malikmalikayesha and contributors
+
+This project is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+It is an independent HTTP client for BoaviztAPI (https://github.com/Boavizta/boaviztapi),
+which is developed by Boavizta and licensed under the GNU Affero General Public License v3.0.
+No BoaviztAPI code or data is bundled with this project. The JSON files under
+tests/fixtures/ are responses recorded from a running BoaviztAPI instance and are
+used only as test data. All impact figures returned by this server are computed by
+BoaviztAPI.
+
+This is an unofficial community project and is not endorsed by Boavizta.

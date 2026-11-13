@@ -1,0 +1,75 @@
+[project]
+name = "boaviztapi-mcp"
+dynamic = ["version"]
+description = "MCP server that lets AI assistants estimate the environmental footprint of cloud instances, servers, components and devices with BoaviztAPI"
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+requires-python = ">=3.10"
+authors = [{ name = "malikmalikayesha" }]
+keywords = ["mcp", "model-context-protocol", "boavizta", "boaviztapi", "carbon", "sustainability", "green-it", "lca"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Scientific/Engineering",
+    "Typing :: Typed",
+]
+dependencies = [
+    "mcp>=2.3,<3",
+    "httpx2>=2.14",
+    "pydantic>=2.12",
+]
+
+[project.urls]
+Homepage = "https://github.com/malikmalikayesha/boaviztapi-mcp"
+Issues = "https://github.com/malikmalikayesha/boaviztapi-mcp/issues"
+Changelog = "https://github.com/malikmalikayesha/boaviztapi-mcp/blob/main/CHANGELOG.md"
+
+[project.scripts]
+boaviztapi-mcp = "boaviztapi_mcp.__main__:main"
+
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+path = "src/boaviztapi_mcp/__init__.py"
+
+[tool.hatch.build.targets.sdist]
+include = ["src", "tests", "README.md", "LICENSE", "NOTICE", "CHANGELOG.md"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9",
+    "pytest-cov>=7",
+    "ruff>=0.17",
+    "pyright>=1.1.414",
+]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 88
+src = ["src", "tests", "scripts"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "RUF", "ASYNC", "PT"]
+
+[tool.pyright]
+pythonVersion = "3.10"
+include = ["src", "tests", "scripts"]
+typeCheckingMode = "standard"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = ["-m", "not live", "--strict-markers"]
+markers = [
+    "live: calls a real BoaviztAPI instance (set BOAVIZTAPI_URL; run with -m live)",
+]
