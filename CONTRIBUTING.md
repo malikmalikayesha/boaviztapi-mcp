@@ -34,6 +34,7 @@ uv run pytest
 
   Use `--base-url http://localhost:5000` to record from a local instance.
 - Summary text is compared with `tests/golden/`. After an intended change, regenerate with `UPDATE_GOLDEN=1 uv run pytest tests/unit/test_formatting.py` and review the diff.
+- `docs/tools.md` is generated from the tool schemas. After changing a tool, its parameters or their descriptions, run `uv run python scripts/gen_tool_docs.py`; `tests/test_docs.py` fails until you do.
 - Live tests (`-m live`) run against a real instance:
 
   ```bash
@@ -44,6 +45,15 @@ uv run pytest
   Known upstream quirks are strict `xfail` tests. If one starts passing, upstream changed: review the matching workaround and remove it if it is no longer needed.
 
 ## Releasing
+
+One-time setup (already done once the first release is out):
+
+- On PyPI, add a trusted publisher for the project `boaviztapi-mcp`: owner `malikmalikayesha`, repository `boaviztapi-mcp`, workflow `release.yml`, environment `pypi`.
+- In the repository settings, create the `pypi` environment.
+- The MCP Registry needs no secret: `release.yml` logs in with GitHub OIDC, and the registry checks the `mcp-name` line in the README on PyPI.
+- Glama lists the repository from `glama.json`; a maintainer claims it once by signing in to glama.ai with GitHub.
+
+Each release:
 
 1. Update the version in `src/boaviztapi_mcp/__init__.py` and `server.json` (both `version` fields), and move the `Unreleased` notes in `CHANGELOG.md` under the new version.
 2. Merge, then tag `vX.Y.Z` on `main` and push the tag. The release workflow publishes to PyPI, the MCP Registry and GitHub Releases.
