@@ -1,0 +1,53 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.malikmalikayesha/boaviztapi-mcp",
+  "title": "BoaviztAPI",
+  "description": "Environmental footprint of cloud instances, servers, GPUs and devices, via BoaviztAPI.",
+  "repository": {
+    "url": "https://github.com/malikmalikayesha/boaviztapi-mcp",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "registryBaseUrl": "https://pypi.org",
+      "identifier": "boaviztapi-mcp",
+      "version": "0.1.0",
+      "runtimeHint": "uvx",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "BOAVIZTAPI_URL",
+          "description": "BoaviztAPI base URL; use your own instance for regular use",
+          "default": "https://api.boavizta.org",
+          "isRequired": false,
+          "format": "string"
+        },
+        {
+          "name": "BOAVIZTAPI_TIMEOUT",
+          "description": "Seconds to wait for each BoaviztAPI request",
+          "default": "20",
+          "isRequired": false,
+          "format": "number"
+        },
+        {
+          "name": "BOAVIZTAPI_DEFAULT_CRITERIA",
+          "description": "Comma-separated impact criteria used when a tool call names none",
+          "default": "gwp,adp,pe",
+          "isRequired": false,
+          "format": "string"
+        },
+        {
+          "name": "BOAVIZTAPI_CACHE_TTL",
+          "description": "Seconds to cache list and lookup responses; 0 disables caching",
+          "default": "86400",
+          "isRequired": false,
+          "format": "number"
+        }
+      ]
+    }
+  ]
+}
