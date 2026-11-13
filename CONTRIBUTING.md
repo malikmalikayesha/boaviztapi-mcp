@@ -18,6 +18,10 @@ uv run pyright
 uv run pytest
 ```
 
+## How changes reach `main`
+
+`main` is protected: every change goes through a pull request, and the CI checks (lint, tests on Python 3.10, 3.12 and 3.14, build, docker) must pass before it can merge. Force pushes and deleting `main` are blocked. Release tags (`v*`) can only be created by maintainers, because a tag publishes to PyPI.
+
 ## Conventions
 
 - Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/) (`feat(tools): ...`, `fix(catalog): ...`).
