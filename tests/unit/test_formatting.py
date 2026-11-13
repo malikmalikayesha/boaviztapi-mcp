@@ -57,7 +57,7 @@ def test_phase_text() -> None:
     ) == ("5 (range 1 to 9) [warning: Generic data]")
 
 
-SUMMARY_SCENARIOS = [name for name in scenarios.SCENARIOS if name != "catalog_lists"]
+SUMMARY_SCENARIOS = [n for n in scenarios.SCENARIOS if not n.startswith("catalog_")]
 
 
 @pytest.mark.parametrize("name", SUMMARY_SCENARIOS)

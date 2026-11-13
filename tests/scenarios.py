@@ -10,7 +10,7 @@ from __future__ import annotations
 from collections.abc import Awaitable, Callable
 from typing import Any
 
-from boaviztapi_mcp.catalog import DEVICE_FAMILIES, Catalog
+from boaviztapi_mcp.catalog import DEVICE_FAMILIES, Catalog, describe
 from boaviztapi_mcp.client import BoaviztaClient
 from boaviztapi_mcp.estimates import CompareItem, Estimator
 from boaviztapi_mcp.models import (
@@ -45,6 +45,15 @@ async def catalog_lists(client: BoaviztaClient) -> None:
         await catalog.device_archetypes(device_type)
     await catalog.countries()
     await catalog.criteria()
+
+
+async def catalog_details(client: BoaviztaClient) -> None:
+    catalog = Catalog(client)
+    await describe(catalog, "cloud_instance", "m5.xlarge", provider="aws")
+    await describe(catalog, "server_archetype", "platform_compute_medium")
+    await describe(catalog, "device_archetype", "laptop-pro", device_type="laptop")
+    await describe(catalog, "gpu", "NVIDIA H100 SXM 80GB")
+    await describe(catalog, "cpu", "Intel Xeon Gold 6134")
 
 
 async def h100_germany_year(client: BoaviztaClient) -> EstimateResult:
@@ -167,6 +176,7 @@ async def gpu_server(client: BoaviztaClient) -> EstimateResult:
 
 SCENARIOS: dict[str, Scenario] = {
     "catalog_lists": catalog_lists,
+    "catalog_details": catalog_details,
     "h100_germany_year": h100_germany_year,
     "m5_france_vs_us_month": m5_france_vs_us_month,
     "laptop_full_life": laptop_full_life,

@@ -1,0 +1,64 @@
+{
+ "request": {
+  "method": "GET",
+  "path": "/v1/utils/name_to_gpu",
+  "params": [
+   [
+    "gpu_name",
+    "NVIDIA H100 SXM 80GB"
+   ]
+  ],
+  "body": null
+ },
+ "status": 200,
+ "json": {
+  "units": null,
+  "usage": {
+   "use_time_ratio": null,
+   "hours_life_time": null,
+   "avg_power": null,
+   "time_workload": null,
+   "usage_location": null,
+   "elec_factors": {
+    "gwp": null,
+    "adp": null,
+    "pe": null,
+    "gwppb": null,
+    "gwppf": null,
+    "gwpplu": null,
+    "ir": null,
+    "lu": null,
+    "odp": null,
+    "pm": null,
+    "pocp": null,
+    "wu": null,
+    "mips": null,
+    "adpe": null,
+    "adpf": null,
+    "ap": null,
+    "ctue": null,
+    "ctuh_c": null,
+    "ctuh_nc": null,
+    "epf": null,
+    "epm": null,
+    "ept": null
+   }
+  },
+  "name": "NVIDIA H100 SXM 80GB",
+  "manufacturer": "NVIDIA",
+  "weight": 1.69,
+  "heatsink_weight": 0.90077,
+  "pwb_surface": 296.37,
+  "pwb_weight": null,
+  "casing_weight": 0.78923,
+  "gpu_surface": 2808.45,
+  "vram": 80,
+  "vram_dies": 6,
+  "vram_surface": null,
+  "tdp": 700.0,
+  "gpus_per_card": 1,
+  "transport_boat": 19000.0,
+  "transport_truck": 1000.0,
+  "transport_plane": 0.0
+ }
+}
