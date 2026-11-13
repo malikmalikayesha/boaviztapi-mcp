@@ -11,6 +11,7 @@ from contextlib import asynccontextmanager
 from typing import Annotated, Any, Literal, TypeVar
 
 import httpx2
+from mcp.server.caching import CacheableMethod, CacheHint
 from mcp.server.mcpserver import MCPServer
 from mcp.server.mcpserver.exceptions import ToolError
 from mcp.types import ToolAnnotations
@@ -69,6 +70,22 @@ When reporting results:
 9. Cite the BoaviztAPI version and URL from the result.
 Use search_catalog to find exact names before estimating when unsure.
 """
+
+DESCRIPTION = (
+    "Estimate the environmental footprint (carbon, resources, energy and more) of"
+    " cloud instances, servers, GPUs and other components, and end-user devices"
+    " with BoaviztAPI."
+)
+
+# The tool list never changes while the server runs, and is the same for every
+# client, so clients and intermediaries may cache it for a day.
+STATIC_LIST = CacheHint(ttl_ms=24 * 60 * 60 * 1000, scope="public")
+CACHE_HINTS: dict[CacheableMethod, CacheHint] = {
+    "tools/list": STATIC_LIST,
+    "prompts/list": STATIC_LIST,
+    "resources/list": STATIC_LIST,
+    "resources/templates/list": STATIC_LIST,
+}
 
 READ_ONLY = ToolAnnotations(
     read_only_hint=True,
@@ -196,14 +213,18 @@ def create_server(
     server: MCPServer[Any] = MCPServer(
         "boaviztapi",
         title="BoaviztAPI",
+        description=DESCRIPTION,
         version=__version__,
         instructions=INSTRUCTIONS,
         website_url="https://github.com/malikmalikayesha/boaviztapi-mcp",
         lifespan=lifespan,
+        cache_hints=CACHE_HINTS,
+        # No change notifications are ever sent: the tool list is fixed.
+        subscriptions=False,
     )
     tool = _tool_decorator(server)
 
-    @tool
+    @tool(title="List impact criteria")
     async def list_impact_criteria(
         query: Annotated[
             str | None,
@@ -244,7 +265,7 @@ def create_server(
 
         return await _guard(run())
 
-    @tool
+    @tool(title="Search the BoaviztAPI catalog")
     async def search_catalog(
         kind: Annotated[CatalogKind, Field(description="What to search.")],
         query: Annotated[
@@ -292,7 +313,7 @@ def create_server(
 
         return await _guard(run())
 
-    @tool
+    @tool(title="Describe a catalog item")
     async def describe_catalog_item(
         kind: Annotated[DescribeKind, Field(description="What kind of item.")],
         name: Annotated[str, Field(description="Name as found with search_catalog.")],
@@ -318,7 +339,7 @@ def create_server(
 
         return await _guard(run())
 
-    @tool
+    @tool(title="Estimate a cloud instance")
     async def estimate_cloud_instance(
         provider: Annotated[str, Field(description="Cloud provider, e.g. 'aws'.")],
         instance_type: Annotated[
@@ -358,7 +379,7 @@ def create_server(
             )
         )
 
-    @tool
+    @tool(title="Estimate a server")
     async def estimate_server(
         archetype: Annotated[
             str | None,
@@ -413,7 +434,7 @@ def create_server(
             )
         )
 
-    @tool
+    @tool(title="Estimate a component")
     async def estimate_component(
         component: Annotated[ComponentKind, Field(description="Component type.")],
         name: Annotated[
@@ -459,7 +480,7 @@ def create_server(
             )
         )
 
-    @tool
+    @tool(title="Estimate an end-user device")
     async def estimate_device(
         device_type: Annotated[DeviceType, Field(description="Kind of device.")],
         archetype: Annotated[
@@ -496,7 +517,7 @@ def create_server(
             )
         )
 
-    @tool
+    @tool(title="Compare estimates")
     async def compare_estimates(
         items: Annotated[
             list[CompareItemInput],
@@ -543,13 +564,17 @@ def _compare_request(item: CompareItemInput) -> EstimateRequest:
     return request
 
 
-def _tool_decorator(
-    server: MCPServer[Any],
-) -> Callable[[Callable[..., Awaitable[Any]]], Callable[..., Awaitable[Any]]]:
-    def register(fn: Callable[..., Awaitable[Any]]) -> Callable[..., Awaitable[Any]]:
-        return server.tool(annotations=READ_ONLY)(fn)
+Decorator = Callable[[Callable[..., Awaitable[Any]]], Callable[..., Awaitable[Any]]]
 
-    return register
+
+def _tool_decorator(server: MCPServer[Any]) -> Callable[..., Decorator]:
+    """``@tool(title=...)``: register a read-only tool with a display title."""
+
+    def tool(*, title: str) -> Decorator:
+        annotations = READ_ONLY.model_copy(update={"title": title})
+        return server.tool(title=title, annotations=annotations)
+
+    return tool
 
 
 def _inline(value: Any) -> str:

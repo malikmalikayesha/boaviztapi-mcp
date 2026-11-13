@@ -54,6 +54,8 @@ async def test_tools_are_listed_with_schemas_and_annotations(
         assert tool.output_schema is not None
         assert tool.annotations is not None
         assert tool.annotations.read_only_hint is True
+        assert tool.title
+        assert tool.annotations.title == tool.title
         assert tool.annotations.destructive_hint is False
     schema = tools["search_catalog"].input_schema
     assert schema["required"] == ["kind"]
