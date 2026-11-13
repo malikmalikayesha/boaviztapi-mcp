@@ -127,7 +127,10 @@ LifetimeHours = Annotated[
 ]
 AvgPower = Annotated[float | None, Field(gt=0, description="Average power in watts.")]
 LoadPercent = Annotated[
-    float | None, Field(ge=0, le=100, description="Average load in percent.")
+    float | None, Field(ge=0, le=100, description="Average CPU load in percent.")
+]
+GpuLoadPercent = Annotated[
+    float | None, Field(ge=0, le=100, description="Average GPU load in percent.")
 ]
 UseTimeRatio = Annotated[
     float | None,
@@ -139,7 +142,9 @@ class CompareItemInput(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     label: str = Field(description="Short unique name for this option.")
-    kind: Literal["cloud_instance", "server", "component", "device"]
+    kind: Literal["cloud_instance", "server", "component", "device"] = Field(
+        description="Which estimate tool's inputs params holds."
+    )
     params: dict[str, Any] = Field(
         description="The inputs of the matching estimate tool, without duration_hours,"
         " criteria and detail. cloud_instance: provider, instance_type, region or"
@@ -283,7 +288,9 @@ def create_server(
             DeviceType | None,
             Field(description="Required for device_archetype."),
         ] = None,
-        limit: Annotated[int, Field(ge=1, le=100)] = 20,
+        limit: Annotated[
+            int, Field(ge=1, le=100, description="Maximum names to return.")
+        ] = 20,
     ) -> SearchResult:
         """Find the exact names BoaviztAPI knows before estimating.
 
@@ -388,17 +395,31 @@ def create_server(
                 " 'platform_compute_medium'); see search_catalog."
             ),
         ] = None,
-        server_type: Literal["rack", "blade"] | None = None,
-        cpu: CpuSpec | None = None,
+        server_type: Annotated[
+            Literal["rack", "blade"] | None,
+            Field(description="Form factor; defaults to the archetype's (rack)."),
+        ] = None,
+        cpu: Annotated[
+            CpuSpec | None,
+            Field(description="CPUs, e.g. {name: 'Xeon Gold 6134', units: 2}."),
+        ] = None,
         ram: Annotated[
             list[RamSpec] | None,
             Field(description="RAM modules, e.g. [{units: 12, capacity_gb: 32}]."),
         ] = None,
-        disks: list[DiskSpec] | None = None,
-        gpu: GpuSpec | None = None,
+        disks: Annotated[
+            list[DiskSpec] | None,
+            Field(
+                description="Disks, e.g. [{type: 'ssd', units: 2, capacity_gb: 960}]."
+            ),
+        ] = None,
+        gpu: Annotated[
+            GpuSpec | None,
+            Field(description="GPUs, e.g. {name: 'A100 SXM4 80GB', units: 8}."),
+        ] = None,
         avg_power_w: AvgPower = None,
         load_percent: LoadPercent = None,
-        gpu_load_percent: LoadPercent = None,
+        gpu_load_percent: GpuLoadPercent = None,
         use_time_ratio: UseTimeRatio = None,
         lifetime_hours: LifetimeHours = None,
         usage_location: UsageLocation = None,
