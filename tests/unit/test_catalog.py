@@ -151,3 +151,32 @@ async def test_validate_criteria(catalog: Catalog) -> None:
         await catalog.validate_criteria(["bogus"])
     with pytest.raises(InputError, match="At least one"):
         await catalog.validate_criteria([])
+
+
+def test_substring_only_matches_are_suggested_not_accepted() -> None:
+    names = ["Nigeria", "France"]
+    with pytest.raises(
+        InputError, match=r"Unknown country 'Niger'.*Close matches: Nigeria"
+    ):
+        resolve("Niger", names, what="country", hint="")
+    with pytest.raises(InputError, match=r"Unknown instance 't3\.large'"):
+        resolve("t3.large", ["t3a.large", "m5.large"], what="instance", hint="")
+
+
+def test_punctuation_only_input_is_rejected() -> None:
+    with pytest.raises(InputError, match="'!!!' is not a valid GPU"):
+        resolve("!!!", GPUS, what="GPU", hint="")
+
+
+async def test_missing_country_is_not_swapped_for_a_similar_one(
+    catalog: Catalog,
+) -> None:
+    with pytest.raises(InputError, match="Unknown location 'Niger'"):
+        await catalog.resolve_location("Niger")
+
+
+async def test_location_records_how_it_was_matched(catalog: Catalog) -> None:
+    assert (await catalog.resolve_location("FRA")).exact is True
+    location = await catalog.resolve_location("united states")
+    assert location.exact is True
+    assert location.requested == "united states"

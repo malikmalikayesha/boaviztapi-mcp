@@ -128,6 +128,8 @@ def resolve(query: str, names: Sequence[str], *, what: str, hint: str) -> str:
         return lowered[0]
 
     q = normalise(text)
+    if not q:
+        raise InputError(f"{text!r} is not a valid {what}. {hint}")
     q_tokens = q.split()
     exact = [name for name in names if normalise(name) == q]
     if len(exact) == 1:
@@ -139,12 +141,8 @@ def resolve(query: str, names: Sequence[str], *, what: str, hint: str) -> str:
         return whole[0]
     if len(whole) > 1:
         raise _ambiguous(text, whole, what, hint)
-    partial = [name for name in names if all(t in normalise(name) for t in q_tokens)]
-    if len(partial) == 1:
-        return partial[0]
-    if len(partial) > 1:
-        raise _ambiguous(text, partial, what, hint)
-
+    # Substring-only matches are never accepted on their own: "Niger" must not
+    # silently become "Nigeria" when the list has no Niger. They are suggested.
     close = rank(text, names)[:MAX_SUGGESTIONS]
     suggestion = f" Close matches: {', '.join(close)}." if close else ""
     raise InputError(f"Unknown {what} {text!r}.{suggestion} {hint}")
@@ -179,6 +177,8 @@ class Criterion:
 class Location:
     code: str
     name: str
+    exact: bool = True
+    requested: str = ""
 
 
 class Catalog:
@@ -389,10 +389,10 @@ class Catalog:
         value = text.strip()
         if value.upper() in by_code:
             code = value.upper()
-            return Location(code=code, name=by_code[code])
+            return Location(code=code, name=by_code[code], requested=value)
         alias = COUNTRY_ALIASES.get(normalise(value))
         if alias and alias in by_code:
-            return Location(code=alias, name=by_code[alias])
+            return Location(code=alias, name=by_code[alias], requested=value)
         name = resolve(
             value,
             list(countries),
@@ -403,7 +403,12 @@ class Catalog:
                 " search_catalog(kind='country', query=...) to look one up."
             ),
         )
-        return Location(code=countries[name], name=name)
+        return Location(
+            code=countries[name],
+            name=name,
+            exact=normalise(name) == normalise(value),
+            requested=value,
+        )
 
     async def validate_criteria(self, requested: Sequence[str]) -> list[str]:
         known = await self.criteria()
