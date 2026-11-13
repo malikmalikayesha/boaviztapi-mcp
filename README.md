@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/malikmalikayesha/boaviztapi-mcp/main/assets/icon.svg" width="96" height="96" alt="boaviztapi-mcp icon: a chip with a leaf">
+</p>
+
 # boaviztapi-mcp
 
 [![CI](https://github.com/malikmalikayesha/boaviztapi-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/malikmalikayesha/boaviztapi-mcp/actions/workflows/ci.yml)
@@ -10,6 +14,11 @@
 An [MCP](https://modelcontextprotocol.io) server that lets AI assistants answer questions about the environmental footprint of IT hardware: cloud instances, servers, GPUs and other components, and end-user devices. It asks [BoaviztAPI](https://github.com/Boavizta/boaviztapi) and reports the answer with units, uncertainty ranges and caveats.
 
 > Unofficial community project. Every number comes from BoaviztAPI, built by [Boavizta](https://boavizta.org). See their [methodology documentation](https://doc.api.boavizta.org) for how impacts are computed.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/malikmalikayesha/boaviztapi-mcp/main/assets/how-it-works-dark.svg">
+  <img src="https://raw.githubusercontent.com/malikmalikayesha/boaviztapi-mcp/main/assets/how-it-works-light.svg" alt="How it works: an AI assistant calls boaviztapi-mcp over MCP; the server resolves names, checks locations and criteria, then asks BoaviztAPI over HTTPS and returns impacts with units, ranges and warnings." width="100%">
+</picture>
 
 ## Quick start
 
