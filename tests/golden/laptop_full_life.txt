@@ -10,6 +10,6 @@ adp, Use of minerals and fossil ressources (kgSbeq):
 pe, Consumption of primary energy (MJ):
   embedded: not available from BoaviztAPI for this item
   use: 10000 (range 6.833 to 492100)
-Assumptions: average power 75 W, use time ratio 0.3, lifetime 35040 hours, grid carbon intensity 0.38 kg CO2eq/kWh, type pro, units 1.
+Assumptions: average power 75 W (range 50 to 100), use time ratio 0.3, lifetime 35040 hours, grid carbon intensity 0.38 kg CO2eq/kWh (range 0.023 to 1.13161), type pro, units 1.
 Note: No location given: the use phase uses BoaviztAPI's default electricity mix (EEE, Europe), so its range is wide. Pass usage_location for a country-specific figure.
 Source: BoaviztAPI 2.6.0 at https://api.boavizta.org

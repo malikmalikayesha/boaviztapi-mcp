@@ -103,3 +103,31 @@ def test_parse_verbose_flat_attributes_and_components() -> None:
 def test_parse_verbose_tolerates_missing_or_odd_input() -> None:
     assert parse_verbose(None).components == []
     assert parse_verbose({"duration": "soon", "x": 1}).duration_hours is None
+
+
+def test_merge_verbose_combines_component_impacts() -> None:
+    from boaviztapi_mcp.parsing import merge_verbose
+
+    first = {
+        "avg_power": {"value": 1.0},
+        "CPU-1": {"impacts": {"gwp": {"embedded": {"value": 1.0}}}},
+    }
+    second = {
+        "avg_power": {"value": 2.0},
+        "CPU-1": {"impacts": {"pe": {"embedded": {"value": 3.0}}}},
+        "RAM-1": {"impacts": {"pe": {"embedded": {"value": 4.0}}}},
+    }
+    merged = merge_verbose([first, second, None])
+    assert merged["avg_power"] == {"value": 1.0}
+    assert set(merged["CPU-1"]["impacts"]) == {"gwp", "pe"}
+    assert set(merged["RAM-1"]["impacts"]) == {"pe"}
+    assert first["CPU-1"]["impacts"] == {"gwp": {"embedded": {"value": 1.0}}}
+    assert merge_verbose([None]) is None
+
+
+def test_assumptions_keep_ranges() -> None:
+    info = parse_verbose(
+        {"avg_power": {"value": 479.5, "unit": "W", "min": 70.0, "max": 700.0}}
+    )
+    (power,) = assumptions(info, everything=False)
+    assert (power.min, power.max) == (70, 700)

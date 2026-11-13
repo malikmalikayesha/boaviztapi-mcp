@@ -11,7 +11,8 @@ pe, Consumption of primary energy (MJ):
   embedded: 16000 (range 9106 to 28440) [warning: End of life is not included in the calculation]
   use: 160000 (range 60190 to 239000)
   total: 176000 (range 69300 to 267400)
-Assumptions: average power 324.274 W, use time ratio 1, lifetime 35040 hours, grid carbon intensity 0.098 kg CO2eq/kWh, units 1.
+Assumptions: average power 324.274 W (range 121.726 to 483.456), use time ratio 1, lifetime 35040 hours, grid carbon intensity 0.098 kg CO2eq/kWh, units 1.
+Note: CPU 'xeon gold 6134' was read as Intel Xeon Gold 6134.
 Note: The period (43800 h) is longer than the hardware lifetime (35040 h): embedded impact covers one unit's full manufacturing; replacement hardware is not counted.
 Note: Not specified, so taken from the archetype platform_compute_medium: SSD.
 Note: Power supply, case, motherboard and assembly always come from the archetype.

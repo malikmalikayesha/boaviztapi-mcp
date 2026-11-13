@@ -7,7 +7,7 @@ gwp, Total climate change (kgCO2eq):
 adpe, Use of mineral and metal resources (kg SB eq.):
   embedded: BoaviztAPI failed for this criterion (HTTP 500)
   use: BoaviztAPI failed for this criterion (HTTP 500)
-Assumptions: units 1, TDP 700 W, average power 479.5 W, load 65 %, use time ratio 1, lifetime 26280 hours, grid carbon intensity 0.38 kg CO2eq/kWh.
+Assumptions: units 1, TDP 700 W, average power 479.5 W (range 70 to 700), load 65 % (range 0 to 100), use time ratio 1, lifetime 26280 hours, grid carbon intensity 0.38 kg CO2eq/kWh (range 0.023 to 1.13161).
 Note: GPU only; the host server is not included. Use estimate_server with a gpu block for a whole system.
 Note: No location given: the use phase uses BoaviztAPI's default electricity mix (EEE, Europe), so its range is wide. Pass usage_location for a country-specific figure.
 Note: BoaviztAPI failed (HTTP 500) for: adpe. The other criteria are unaffected.

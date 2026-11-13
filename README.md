@@ -72,7 +72,8 @@ pe, Consumption of primary energy (MJ):
   embedded: 10550
   use: 270000 (range 39880 to 398800)
   total: 280600 (range 50430 to 409400)
-Assumptions: units 4, TDP 700 W, average power 479.5 W, load 65 %, use time ratio 1, lifetime 26280 hours, grid carbon intensity 0.422 kg CO2eq/kWh.
+Assumptions: units 4, TDP 700 W, average power 479.5 W (range 70 to 700), load 65 % (range 0 to 100), use time ratio 1, lifetime 26280 hours, grid carbon intensity 0.422 kg CO2eq/kWh.
+Note: GPU 'h100 sxm' was read as NVIDIA H100 SXM 80GB.
 Note: GPU only; the host server is not included. Use estimate_server with a gpu block for a whole system.
 Source: BoaviztAPI 2.6.0 at https://api.boavizta.org
 ```

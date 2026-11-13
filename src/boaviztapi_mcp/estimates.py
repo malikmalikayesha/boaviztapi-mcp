@@ -15,7 +15,12 @@ from boaviztapi_mcp.errors import (
     UnexpectedResponse,
     UpstreamServerError,
 )
-from boaviztapi_mcp.formatting import format_comparison, format_estimate, number
+from boaviztapi_mcp.formatting import (
+    format_comparison,
+    format_estimate,
+    number,
+    query_number,
+)
 from boaviztapi_mcp.models import (
     ApiInfo,
     CloudInstanceRequest,
@@ -33,7 +38,12 @@ from boaviztapi_mcp.models import (
     ServerRequest,
     Subject,
 )
-from boaviztapi_mcp.parsing import assumptions, parse_impacts, parse_verbose
+from boaviztapi_mcp.parsing import (
+    assumptions,
+    merge_verbose,
+    parse_impacts,
+    parse_verbose,
+)
 
 DEFAULT_SERVER_ARCHETYPE = "platform_compute_medium"
 CONFIGURABLE_SERVER_PARTS = frozenset({"CPU", "RAM", "SSD", "HDD", "GPU"})
@@ -173,8 +183,10 @@ class Estimator:
             provider=provider,
             requested_as=None if instance == req.instance_type else req.instance_type,
         )
+        prepared.notes.extend(_read_as("Instance type", req.instance_type, instance))
         if req.region:
             prepared.region = await self.catalog.resolve_region(provider, req.region)
+            prepared.notes.extend(_read_as("Region", req.region, prepared.region))
             usage["region"] = prepared.region
         elif req.usage_location:
             prepared.location = await self.catalog.resolve_location(req.usage_location)
@@ -194,19 +206,24 @@ class Estimator:
         config: dict[str, Any] = {}
         given: set[str] = set()
         parts: list[str] = []
+        notes: list[str] = []
+        if req.archetype and archetype:
+            notes.extend(_read_as("Archetype", req.archetype, archetype))
         if req.cpu is not None:
             cpu: dict[str, Any] = {}
             if req.cpu.name:
                 cpu["name"] = await self.catalog.resolve_cpu(req.cpu.name)
+                notes.extend(_read_as("CPU", req.cpu.name, cpu["name"]))
             if req.cpu.units is not None:
                 cpu["units"] = req.cpu.units
             if req.cpu.core_units is not None:
                 cpu["core_units"] = req.cpu.core_units
             if req.cpu.tdp_w is not None:
                 cpu["tdp"] = round(req.cpu.tdp_w)
-            config["cpu"] = cpu
-            given.add("CPU")
-            parts.append(f"{cpu.get('units', 1)}x {cpu.get('name', 'CPU')}")
+            if cpu:
+                config["cpu"] = cpu
+                given.add("CPU")
+                parts.append(f"{cpu.get('units', 1)}x {cpu.get('name', 'CPU')}")
         if req.ram:
             config["ram"] = [
                 {"units": ram.units, "capacity": ram.capacity_gb} for ram in req.ram
@@ -228,6 +245,7 @@ class Estimator:
             gpu: dict[str, Any] = {"units": req.gpu.units}
             if req.gpu.name:
                 gpu["name"] = await self.catalog.resolve_gpu(req.gpu.name)
+                notes.extend(_read_as("GPU", req.gpu.name, gpu["name"]))
             config["gpu"] = gpu
             given.add("GPU")
             parts.append(f"{req.gpu.units}x {gpu.get('name', 'GPU')}")
@@ -257,6 +275,7 @@ class Estimator:
             location=location,
             server_parts_given=given,
             archetype=shown_archetype,
+            notes=notes,
         )
 
     async def _prepare_component(self, req: ComponentRequest) -> Prepared:
@@ -269,12 +288,14 @@ class Estimator:
             raise InputError("tdp_w applies to gpu and cpu only.")
         body: dict[str, Any] = {"units": req.units}
         name = None
+        read_as: list[str] = []
         if req.name:
             resolver = (
                 self.catalog.resolve_gpu if kind == "gpu" else self.catalog.resolve_cpu
             )
             name = await resolver(req.name)
             body["name"] = name
+            read_as = _read_as(kind.upper(), req.name, name)
         if req.capacity_gb is not None:
             body["capacity"] = req.capacity_gb
         if req.tdp_w is not None:
@@ -287,7 +308,7 @@ class Estimator:
         )
         if usage:
             body["usage"] = usage
-        notes = []
+        notes = list(read_as)
         if kind == "gpu":
             notes.append(
                 "GPU only; the host server is not included. Use estimate_server with"
@@ -321,6 +342,11 @@ class Estimator:
             if req.archetype
             else None
         )
+        notes = (
+            _read_as("Archetype", req.archetype, archetype)
+            if req.archetype and archetype
+            else []
+        )
         usage, location = await self._usage(
             req.usage_location,
             hours_life_time=req.lifetime_hours,
@@ -337,6 +363,7 @@ class Estimator:
             query=[("archetype", archetype)] if archetype else [],
             location=location,
             archetype=archetype,
+            notes=notes,
         )
 
     async def _usage(
@@ -363,7 +390,7 @@ class Estimator:
         )
         base = [*prepared.query, ("verbose", "true")]
         if duration_hours is not None:
-            base.append(("duration", number(duration_hours)))
+            base.append(("duration", query_number(duration_hours)))
         impacts_raw, verbose, failed = await self._post(
             prepared.path, base, checked, prepared.body
         )
@@ -408,6 +435,11 @@ class Estimator:
             )
 
         location = await self._location(prepared, info.location_code)
+        if prepared.location and not prepared.location.exact:
+            notes.append(
+                f"Location {prepared.location.requested!r} was read as"
+                f" {prepared.location.name} ({prepared.location.code})."
+            )
         has_use = any(impact.use.status == "ok" for impact in impacts)
         if location.basis == "default_mix" and has_use:
             where = (
@@ -472,7 +504,7 @@ class Estimator:
             return_exceptions=True,
         )
         impacts: dict[str, Any] = {}
-        verbose: Any = None
+        verboses: list[Any] = []
         failed: list[str] = []
         for code, outcome in zip(criteria, results, strict=True):
             if isinstance(outcome, UpstreamServerError) and outcome.status == 500:
@@ -481,12 +513,12 @@ class Estimator:
             if isinstance(outcome, BaseException):
                 raise outcome
             impacts.update(_impacts_of(outcome))
-            verbose = verbose if verbose is not None else _verbose_of(outcome)
+            verboses.append(_verbose_of(outcome))
         if not impacts:
             raise UpstreamServerError(
                 500, f"failed for every requested criterion ({', '.join(criteria)})"
             )
-        return impacts, verbose, failed
+        return impacts, merge_verbose(verboses), failed
 
     async def _location(self, prepared: Prepared, verbose_code: str | None) -> Location:
         if prepared.region:
@@ -516,6 +548,13 @@ class Estimator:
             if value == code:
                 return name
         return None
+
+
+def _read_as(what: str, given: str, resolved: str) -> list[str]:
+    """A note when a name was matched to a differently written upstream name."""
+    if cat.normalise(given) == cat.normalise(resolved):
+        return []
+    return [f"{what} {given!r} was read as {resolved}."]
 
 
 def _server_notes(prepared: Prepared, components: Sequence[Any]) -> list[str]:
