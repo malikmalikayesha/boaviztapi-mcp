@@ -13,7 +13,9 @@ def main(argv: list[str] | None = None) -> None:
         prog="boaviztapi-mcp",
         description="MCP server for BoaviztAPI (stdio transport).",
     )
-    parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
+    parser.add_argument(
+        "--version", action="version", version=f"%(prog)s {__version__}"
+    )
     parser.parse_args(argv)
     print("boaviztapi-mcp: the server is not implemented yet", file=sys.stderr)
     sys.exit(1)

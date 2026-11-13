@@ -45,3 +45,31 @@ path = "src/boaviztapi_mcp/__init__.py"
 
 [tool.hatch.build.targets.sdist]
 include = ["src", "tests", "README.md", "LICENSE", "NOTICE", "CHANGELOG.md"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9",
+    "pytest-cov>=7",
+    "ruff>=0.17",
+    "pyright>=1.1.414",
+]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 88
+src = ["src", "tests", "scripts"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "RUF", "ASYNC", "PT"]
+
+[tool.pyright]
+pythonVersion = "3.10"
+include = ["src", "tests", "scripts"]
+typeCheckingMode = "standard"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = ["-m", "not live", "--strict-markers"]
+markers = [
+    "live: calls a real BoaviztAPI instance (set BOAVIZTAPI_URL; run with -m live)",
+]
