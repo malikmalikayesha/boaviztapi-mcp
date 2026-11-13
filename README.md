@@ -3,6 +3,7 @@
 [![CI](https://github.com/malikmalikayesha/boaviztapi-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/malikmalikayesha/boaviztapi-mcp/actions/workflows/ci.yml)
 [![PyPI](https://img.shields.io/pypi/v/boaviztapi-mcp)](https://pypi.org/project/boaviztapi-mcp/)
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
+[![boaviztapi-mcp MCP server](https://glama.ai/mcp/servers/malikmalikayesha/boaviztapi-mcp/badges/score.svg)](https://glama.ai/mcp/servers/malikmalikayesha/boaviztapi-mcp)
 
 <!-- mcp-name: io.github.malikmalikayesha/boaviztapi-mcp -->
 
