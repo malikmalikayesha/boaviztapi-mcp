@@ -1,0 +1,12 @@
+laptop (default archetype), over its full lifetime (35040 h), in France (FRA)
+Embedded = the full manufacturing impact.
+wu, Use of water resources (m3 eq.):
+  embedded: -812 [warning: Generic data used for impact calculation]
+  use: 2.9 (range 1.931 to 3.862)
+  total: -809.1 (range -810.1 to -808.1)
+gwp, Total climate change (kgCO2eq):
+  embedded: 181 [warning: Generic data used for impact calculation]
+  use: 77 (range 51.51 to 103)
+  total: 258 (range 232.5 to 284)
+Assumptions: average power 75 W, use time ratio 0.3, lifetime 35040 hours, grid carbon intensity 0.098 kg CO2eq/kWh, type pro, units 1.
+Source: BoaviztAPI 2.6.0 at https://api.boavizta.org

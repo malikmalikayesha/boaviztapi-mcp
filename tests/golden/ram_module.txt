@@ -1,0 +1,16 @@
+1x 64 GB RAM, over 8760 h (1 year), in France (FRA)
+Embedded = the share of manufacturing allocated to 8760 h of a 26280 h lifetime.
+gwp, Total climate change (kgCO2eq):
+  embedded: 39 (range 21.5 to 76.83) [warning: End of life is not included in the calculation]
+  use: 4.8 (range 3.918 to 5.597)
+  total: 43.8 (range 25.42 to 82.43)
+adp, Use of minerals and fossil ressources (kgSbeq):
+  embedded: 0.0016 (range 0.001129 to 0.002714) [warning: End of life is not included in the calculation]
+  use: 2.36e-06 (range 1.942e-06 to 2.775e-06)
+  total: 0.001602 (range 0.001131 to 0.002717)
+pe, Consumption of primary energy (MJ):
+  embedded: 490 (range 269.9 to 956.5) [warning: End of life is not included in the calculation]
+  use: 550 (range 451.3 to 644.8)
+  total: 1040 (range 721.2 to 1601)
+Assumptions: units 1, capacity 64 GB, average power 5.542 W, load 50 %, use time ratio 1, lifetime 26280 hours, grid carbon intensity 0.098 kg CO2eq/kWh.
+Source: BoaviztAPI 2.6.0 at https://api.boavizta.org

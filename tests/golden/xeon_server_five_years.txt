@@ -1,0 +1,18 @@
+server (2x Intel Xeon Gold 6134, 12x 32 GB RAM), archetype platform_compute_medium, over 43800 h (5 years), in France (FRA)
+gwp, Total climate change (kgCO2eq):
+  embedded: 1200 (range 694.8 to 2207) [warning: End of life is not included in the calculation]
+  use: 1400 (range 522.5 to 2075)
+  total: 2600 (range 1217 to 4282)
+adp, Use of minerals and fossil ressources (kgSbeq):
+  embedded: 0.16 (range 0.1128 to 0.223) [warning: End of life is not included in the calculation]
+  use: 0.00069 (range 0.000259 to 0.001029)
+  total: 0.1607 (range 0.1131 to 0.224)
+pe, Consumption of primary energy (MJ):
+  embedded: 16000 (range 9106 to 28440) [warning: End of life is not included in the calculation]
+  use: 160000 (range 60190 to 239000)
+  total: 176000 (range 69300 to 267400)
+Assumptions: average power 324.274 W, use time ratio 1, lifetime 35040 hours, grid carbon intensity 0.098 kg CO2eq/kWh, units 1.
+Note: The period (43800 h) is longer than the hardware lifetime (35040 h): embedded impact covers one unit's full manufacturing; replacement hardware is not counted.
+Note: Not specified, so taken from the archetype platform_compute_medium: SSD.
+Note: Power supply, case, motherboard and assembly always come from the archetype.
+Source: BoaviztAPI 2.6.0 at https://api.boavizta.org

@@ -1,0 +1,18 @@
+server (8x NVIDIA A100 SXM4 80GB), archetype platfom_gpucompute_high, over 8760 h (1 year), in Germany (DEU)
+Embedded = the share of manufacturing allocated to 8760 h of a 35040 h lifetime.
+gwp, Total climate change (kgCO2eq):
+  embedded: 1640 (range 1364 to 2352) [warning: End of life is not included in the calculation]
+  use: 11900 (range 10230 to 13540)
+  total: 13540 (range 11590 to 15890)
+adp, Use of minerals and fossil ressources (kgSbeq):
+  embedded: 0.052 (range 0.03671 to 0.08302) [warning: End of life is not included in the calculation]
+  use: 0.00247 (range 0.002131 to 0.00282)
+  total: 0.05447 (range 0.03884 to 0.08584)
+pe, Consumption of primary energy (MJ):
+  embedded: 22000 (range 18240 to 30690) [warning: End of life is not included in the calculation]
+  use: 460000 (range 394300 to 521800)
+  total: 482000 (range 412500 to 552500)
+Assumptions: average power 3213.18 W, use time ratio 1, lifetime 35040 hours, grid carbon intensity 0.422 kg CO2eq/kWh, units 1.
+Note: Not specified, so taken from the archetype platfom_gpucompute_high: CPU, RAM, SSD.
+Note: Power supply, case, motherboard and assembly always come from the archetype.
+Source: BoaviztAPI 2.6.0 at https://api.boavizta.org
