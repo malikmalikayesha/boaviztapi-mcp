@@ -1,0 +1,13 @@
+{
+ "request": {
+  "method": "GET",
+  "path": "/v1/terminal/vr_headset/archetypes",
+  "params": [],
+  "body": null
+ },
+ "status": 200,
+ "json": [
+  "vr-headset-oled",
+  "vr-headset-lcd"
+ ]
+}

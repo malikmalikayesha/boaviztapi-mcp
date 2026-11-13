@@ -1,0 +1,4 @@
+{
+ "base_url": "https://api.boavizta.org",
+ "api_version": "2.6.0"
+}

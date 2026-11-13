@@ -1,0 +1,13 @@
+{
+ "request": {
+  "method": "GET",
+  "path": "/v1/terminal/desktop/archetypes",
+  "params": [],
+  "body": null
+ },
+ "status": 200,
+ "json": [
+  "desktop-pro",
+  "desktop-perso"
+ ]
+}

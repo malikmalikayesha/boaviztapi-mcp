@@ -1,0 +1,155 @@
+{
+ "request": {
+  "method": "GET",
+  "path": "/v1/utils/impact_criteria",
+  "params": [],
+  "body": null
+ },
+ "status": 200,
+ "json": {
+  "gwp": {
+   "name": "gwp",
+   "unit": "kgCO2eq",
+   "description": "Total climate change",
+   "method": null
+  },
+  "adp": {
+   "name": "adp",
+   "unit": "kgSbeq",
+   "description": "Use of minerals and fossil ressources",
+   "method": null
+  },
+  "pe": {
+   "name": "pe",
+   "unit": "MJ",
+   "description": "Consumption of primary energy",
+   "method": null
+  },
+  "gwppb": {
+   "name": "gwppb",
+   "unit": "kg CO2 eq.",
+   "description": "Climate change - Contribution of biogenic emissions",
+   "method": "PEF"
+  },
+  "gwppf": {
+   "name": "gwppf",
+   "unit": "kg CO2 eq.",
+   "description": "Climate change - Contribution of fossil fuel emissions",
+   "method": "PEF"
+  },
+  "gwpplu": {
+   "name": "gwpplu",
+   "unit": "kg CO2 eq.",
+   "description": "Climate change - Contribution of emissions from land use change",
+   "method": "PEF"
+  },
+  "ir": {
+   "name": "ir",
+   "unit": "kg U235 eq.",
+   "description": "Emissions of radionizing substances",
+   "method": "PEF"
+  },
+  "lu": {
+   "name": "lu",
+   "unit": "No dimension",
+   "description": "Land use",
+   "method": "PEF"
+  },
+  "odp": {
+   "name": "odp",
+   "unit": "kg CFC-11 eq.",
+   "description": "Depletion of the ozone layer",
+   "method": "PEF"
+  },
+  "pm": {
+   "name": "pm",
+   "unit": "Disease occurrence",
+   "description": "Fine particle emissions",
+   "method": "PEF"
+  },
+  "pocp": {
+   "name": "pocp",
+   "unit": "kg NMVOC eq.",
+   "description": "Photochemical ozone formation",
+   "method": "PEF"
+  },
+  "wu": {
+   "name": "wu",
+   "unit": "m3 eq.",
+   "description": "Use of water resources",
+   "method": "PEF"
+  },
+  "mips": {
+   "name": "mips",
+   "unit": "kg",
+   "description": "Material input per unit of services",
+   "method": null
+  },
+  "adpe": {
+   "name": "adpe",
+   "unit": "kg SB eq.",
+   "description": "Use of mineral and metal resources",
+   "method": "PEF"
+  },
+  "adpf": {
+   "name": "adpf",
+   "unit": "MJ",
+   "description": "Use of fossil resources (including nuclear)",
+   "method": "PEF"
+  },
+  "ap": {
+   "name": "ap",
+   "unit": "mol H+ eq.",
+   "description": "Acidification",
+   "method": "PEF"
+  },
+  "ctue": {
+   "name": "ctue",
+   "unit": "CTUe",
+   "description": "Freshwater ecotoxicity",
+   "method": "PEF"
+  },
+  "ctuh_c": {
+   "name": "ctuh_c",
+   "unit": "CTUh",
+   "description": "Human Toxicity - Carcinogenic Effects",
+   "method": "PEF"
+  },
+  "ctuh_nc": {
+   "name": "ctuh_nc",
+   "unit": "CTUh",
+   "description": "Human toxicity - non-carcinogenic effects",
+   "method": "PEF"
+  },
+  "epf": {
+   "name": "epf",
+   "unit": "kg P eq.",
+   "description": "Eutrophication of freshwater",
+   "method": "PEF"
+  },
+  "epm": {
+   "name": "epm",
+   "unit": "kg N eq.",
+   "description": "Eutrophication of marine waters",
+   "method": "PEF"
+  },
+  "ept": {
+   "name": "ept",
+   "unit": "mol N eq.",
+   "description": "Terrestrial eutrophication",
+   "method": "PEF"
+  },
+  "fw": {
+   "name": "fw",
+   "unit": "m3",
+   "description": "Net use of freshwater",
+   "method": ""
+  },
+  "fe": {
+   "name": "fe",
+   "unit": "kWh",
+   "description": "Final energy consumption",
+   "method": null
+  }
+ }
+}
