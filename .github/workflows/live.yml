@@ -1,0 +1,35 @@
+name: Live
+
+# Runs the opt-in live suite against the latest BoaviztAPI image. Never against
+# the public demo instance.
+on:
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    services:
+      boaviztapi:
+        image: ghcr.io/boavizta/boaviztapi:latest
+        ports:
+          - 5000:5000
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10.3.3
+      - run: uv sync --locked
+      - name: Wait for BoaviztAPI
+        run: |
+          for i in $(seq 1 60); do
+            curl -sf http://localhost:5000/v1/utils/version && exit 0
+            sleep 2
+          done
+          exit 1
+      - name: Live tests (known upstream quirks are strict xfails)
+        run: uv run pytest -m live -rxX
+        env:
+          BOAVIZTAPI_URL: http://localhost:5000
