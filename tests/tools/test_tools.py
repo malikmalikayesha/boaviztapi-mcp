@@ -65,10 +65,7 @@ async def test_tools_are_listed_with_schemas_and_annotations(
 async def test_server_identity(session: mcp.Client) -> None:
     assert session.server_info is not None
     assert session.server_info.name == "boaviztapi"
-    assert {icon.mime_type for icon in session.server_info.icons or []} == {
-        "image/svg+xml",
-        "image/png",
-    }
+    assert not session.server_info.icons
     assert session.instructions is not None
     assert "not available from BoaviztAPI" in session.instructions
 

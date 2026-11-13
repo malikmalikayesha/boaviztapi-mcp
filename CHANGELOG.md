@@ -6,6 +6,18 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+## [0.1.2]
+
+### Removed
+
+- The server icon. MCP clients and the MCP Registry show no icon for the server.
+
+### Changed
+
+- The README has a how-it-works diagram and a Claude Desktop screenshot of a real
+  answer.
+- The Docker image uses Python 3.15.
+
 ## [0.1.1]
 
 ### Changed
@@ -42,6 +54,7 @@ All notable changes to this project are documented here. The format follows
 - Documentation: README with privacy, limitations and troubleshooting sections, a
   generated tool reference (`docs/tools.md`), contributing guide and security policy.
 
-[Unreleased]: https://github.com/malikmalikayesha/boaviztapi-mcp/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/malikmalikayesha/boaviztapi-mcp/compare/v0.1.2...HEAD
+[0.1.2]: https://github.com/malikmalikayesha/boaviztapi-mcp/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/malikmalikayesha/boaviztapi-mcp/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/malikmalikayesha/boaviztapi-mcp/releases/tag/v0.1.0

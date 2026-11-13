@@ -3,33 +3,17 @@
   "name": "io.github.malikmalikayesha/boaviztapi-mcp",
   "title": "BoaviztAPI",
   "description": "Environmental footprint of cloud instances, servers, GPUs and devices, via BoaviztAPI.",
-  "icons": [
-    {
-      "src": "https://raw.githubusercontent.com/malikmalikayesha/boaviztapi-mcp/main/assets/icon.svg",
-      "mimeType": "image/svg+xml",
-      "sizes": [
-        "any"
-      ]
-    },
-    {
-      "src": "https://raw.githubusercontent.com/malikmalikayesha/boaviztapi-mcp/main/assets/icon.png",
-      "mimeType": "image/png",
-      "sizes": [
-        "512x512"
-      ]
-    }
-  ],
   "repository": {
     "url": "https://github.com/malikmalikayesha/boaviztapi-mcp",
     "source": "github"
   },
-  "version": "0.1.1",
+  "version": "0.1.2",
   "packages": [
     {
       "registryType": "pypi",
       "registryBaseUrl": "https://pypi.org",
       "identifier": "boaviztapi-mcp",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "runtimeHint": "uvx",
       "transport": {
         "type": "stdio"
