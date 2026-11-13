@@ -1,0 +1,587 @@
+{
+ "request": {
+  "method": "GET",
+  "path": "/v1/utils/cloud_regions",
+  "params": [],
+  "body": null
+ },
+ "status": 200,
+ "json": [
+  {
+   "provider": "aws",
+   "region": "us-east-1"
+  },
+  {
+   "provider": "aws",
+   "region": "us-east-2"
+  },
+  {
+   "provider": "aws",
+   "region": "us-west-1"
+  },
+  {
+   "provider": "aws",
+   "region": "us-west-2"
+  },
+  {
+   "provider": "aws",
+   "region": "ca-central-1"
+  },
+  {
+   "provider": "aws",
+   "region": "eu-central-1"
+  },
+  {
+   "provider": "aws",
+   "region": "eu-west-1"
+  },
+  {
+   "provider": "aws",
+   "region": "eu-west-2"
+  },
+  {
+   "provider": "aws",
+   "region": "eu-west-3"
+  },
+  {
+   "provider": "aws",
+   "region": "eu-north-1"
+  },
+  {
+   "provider": "aws",
+   "region": "eu-south-1"
+  },
+  {
+   "provider": "aws",
+   "region": "ap-south-1"
+  },
+  {
+   "provider": "aws",
+   "region": "ap-northeast-1"
+  },
+  {
+   "provider": "aws",
+   "region": "ap-northeast-2"
+  },
+  {
+   "provider": "aws",
+   "region": "ap-northeast-3"
+  },
+  {
+   "provider": "aws",
+   "region": "ap-southeast-1"
+  },
+  {
+   "provider": "aws",
+   "region": "ap-southeast-2"
+  },
+  {
+   "provider": "aws",
+   "region": "sa-east-1"
+  },
+  {
+   "provider": "aws",
+   "region": "me-south-1"
+  },
+  {
+   "provider": "aws",
+   "region": "af-south-1"
+  },
+  {
+   "provider": "aws",
+   "region": "ap-east-1"
+  },
+  {
+   "provider": "aws",
+   "region": "cn-north-1"
+  },
+  {
+   "provider": "aws",
+   "region": "cn-northwest-1"
+  },
+  {
+   "provider": "aws",
+   "region": "us-gov-east-1"
+  },
+  {
+   "provider": "aws",
+   "region": "us-gov-west-1"
+  },
+  {
+   "provider": "azure",
+   "region": "australiacentral"
+  },
+  {
+   "provider": "azure",
+   "region": "australiacentral2"
+  },
+  {
+   "provider": "azure",
+   "region": "australiaeast"
+  },
+  {
+   "provider": "azure",
+   "region": "australiasoutheast"
+  },
+  {
+   "provider": "azure",
+   "region": "austriaeast"
+  },
+  {
+   "provider": "azure",
+   "region": "belgiumcentral"
+  },
+  {
+   "provider": "azure",
+   "region": "brazilsouth"
+  },
+  {
+   "provider": "azure",
+   "region": "brazilsoutheast"
+  },
+  {
+   "provider": "azure",
+   "region": "canadacentral"
+  },
+  {
+   "provider": "azure",
+   "region": "canadaeast"
+  },
+  {
+   "provider": "azure",
+   "region": "centralindia"
+  },
+  {
+   "provider": "azure",
+   "region": "centralus"
+  },
+  {
+   "provider": "azure",
+   "region": "chilecentral"
+  },
+  {
+   "provider": "azure",
+   "region": "denmarkeast"
+  },
+  {
+   "provider": "azure",
+   "region": "eastasia"
+  },
+  {
+   "provider": "azure",
+   "region": "eastus"
+  },
+  {
+   "provider": "azure",
+   "region": "eastus2"
+  },
+  {
+   "provider": "azure",
+   "region": "francecentral"
+  },
+  {
+   "provider": "azure",
+   "region": "francesouth"
+  },
+  {
+   "provider": "azure",
+   "region": "germanynorth"
+  },
+  {
+   "provider": "azure",
+   "region": "germanywestcentral"
+  },
+  {
+   "provider": "azure",
+   "region": "indonesiacentral"
+  },
+  {
+   "provider": "azure",
+   "region": "israelcentral"
+  },
+  {
+   "provider": "azure",
+   "region": "italynorth"
+  },
+  {
+   "provider": "azure",
+   "region": "japaneast"
+  },
+  {
+   "provider": "azure",
+   "region": "japanwest"
+  },
+  {
+   "provider": "azure",
+   "region": "koreacentral"
+  },
+  {
+   "provider": "azure",
+   "region": "koreasouth"
+  },
+  {
+   "provider": "azure",
+   "region": "malaysiawest"
+  },
+  {
+   "provider": "azure",
+   "region": "mexicocentral"
+  },
+  {
+   "provider": "azure",
+   "region": "newzealandnorth"
+  },
+  {
+   "provider": "azure",
+   "region": "northcentralus"
+  },
+  {
+   "provider": "azure",
+   "region": "northeurope"
+  },
+  {
+   "provider": "azure",
+   "region": "norwayeast"
+  },
+  {
+   "provider": "azure",
+   "region": "norwaywest"
+  },
+  {
+   "provider": "azure",
+   "region": "polandcentral"
+  },
+  {
+   "provider": "azure",
+   "region": "qatarcentral"
+  },
+  {
+   "provider": "azure",
+   "region": "southafricanorth"
+  },
+  {
+   "provider": "azure",
+   "region": "southafricawest"
+  },
+  {
+   "provider": "azure",
+   "region": "southcentralus"
+  },
+  {
+   "provider": "azure",
+   "region": "southindia"
+  },
+  {
+   "provider": "azure",
+   "region": "southeastasia"
+  },
+  {
+   "provider": "azure",
+   "region": "spaincentral"
+  },
+  {
+   "provider": "azure",
+   "region": "swedencentral"
+  },
+  {
+   "provider": "azure",
+   "region": "switzerlandnorth"
+  },
+  {
+   "provider": "azure",
+   "region": "switzerlandwest"
+  },
+  {
+   "provider": "azure",
+   "region": "uaecentral"
+  },
+  {
+   "provider": "azure",
+   "region": "uaenorth"
+  },
+  {
+   "provider": "azure",
+   "region": "uksouth"
+  },
+  {
+   "provider": "azure",
+   "region": "ukwest"
+  },
+  {
+   "provider": "azure",
+   "region": "westcentralus"
+  },
+  {
+   "provider": "azure",
+   "region": "westeurope"
+  },
+  {
+   "provider": "azure",
+   "region": "westindia"
+  },
+  {
+   "provider": "azure",
+   "region": "westus"
+  },
+  {
+   "provider": "azure",
+   "region": "westus2"
+  },
+  {
+   "provider": "azure",
+   "region": "westus3"
+  },
+  {
+   "provider": "gcp",
+   "region": "africa-south1"
+  },
+  {
+   "provider": "gcp",
+   "region": "us-east1"
+  },
+  {
+   "provider": "gcp",
+   "region": "us-east4"
+  },
+  {
+   "provider": "gcp",
+   "region": "us-east5"
+  },
+  {
+   "provider": "gcp",
+   "region": "us-west1"
+  },
+  {
+   "provider": "gcp",
+   "region": "us-west2"
+  },
+  {
+   "provider": "gcp",
+   "region": "us-west3"
+  },
+  {
+   "provider": "gcp",
+   "region": "us-west4"
+  },
+  {
+   "provider": "gcp",
+   "region": "us-central1"
+  },
+  {
+   "provider": "gcp",
+   "region": "us-south1"
+  },
+  {
+   "provider": "gcp",
+   "region": "northamerica-northeast1"
+  },
+  {
+   "provider": "gcp",
+   "region": "northamerica-northeast2"
+  },
+  {
+   "provider": "gcp",
+   "region": "northamerica-south1"
+  },
+  {
+   "provider": "gcp",
+   "region": "southamerica-east1"
+  },
+  {
+   "provider": "gcp",
+   "region": "southamerica-west1"
+  },
+  {
+   "provider": "gcp",
+   "region": "europe-west1"
+  },
+  {
+   "provider": "gcp",
+   "region": "europe-west2"
+  },
+  {
+   "provider": "gcp",
+   "region": "europe-west3"
+  },
+  {
+   "provider": "gcp",
+   "region": "europe-west4"
+  },
+  {
+   "provider": "gcp",
+   "region": "europe-west6"
+  },
+  {
+   "provider": "gcp",
+   "region": "europe-west8"
+  },
+  {
+   "provider": "gcp",
+   "region": "europe-west9"
+  },
+  {
+   "provider": "gcp",
+   "region": "europe-west10"
+  },
+  {
+   "provider": "gcp",
+   "region": "europe-west12"
+  },
+  {
+   "provider": "gcp",
+   "region": "europe-north1"
+  },
+  {
+   "provider": "gcp",
+   "region": "europe-north2"
+  },
+  {
+   "provider": "gcp",
+   "region": "europe-central2"
+  },
+  {
+   "provider": "gcp",
+   "region": "europe-southwest1"
+  },
+  {
+   "provider": "gcp",
+   "region": "asia-east1"
+  },
+  {
+   "provider": "gcp",
+   "region": "asia-east2"
+  },
+  {
+   "provider": "gcp",
+   "region": "asia-northeast1"
+  },
+  {
+   "provider": "gcp",
+   "region": "asia-northeast2"
+  },
+  {
+   "provider": "gcp",
+   "region": "asia-northeast3"
+  },
+  {
+   "provider": "gcp",
+   "region": "asia-south1"
+  },
+  {
+   "provider": "gcp",
+   "region": "asia-south2"
+  },
+  {
+   "provider": "gcp",
+   "region": "asia-southeast1"
+  },
+  {
+   "provider": "gcp",
+   "region": "asia-southeast2"
+  },
+  {
+   "provider": "gcp",
+   "region": "asia-southeast3"
+  },
+  {
+   "provider": "gcp",
+   "region": "australia-southeast1"
+  },
+  {
+   "provider": "gcp",
+   "region": "australia-southeast2"
+  },
+  {
+   "provider": "gcp",
+   "region": "me-central1"
+  },
+  {
+   "provider": "gcp",
+   "region": "me-central2"
+  },
+  {
+   "provider": "gcp",
+   "region": "me-west1"
+  },
+  {
+   "provider": "scaleway",
+   "region": "fr-par"
+  },
+  {
+   "provider": "scaleway",
+   "region": "nl-ams"
+  },
+  {
+   "provider": "scaleway",
+   "region": "pl-waw"
+  },
+  {
+   "provider": "ovhcloud",
+   "region": "eu-west-par"
+  },
+  {
+   "provider": "ovhcloud",
+   "region": "eu-west-gra"
+  },
+  {
+   "provider": "ovhcloud",
+   "region": "eu-west-rbx"
+  },
+  {
+   "provider": "ovhcloud",
+   "region": "eu-west-sbg"
+  },
+  {
+   "provider": "ovhcloud",
+   "region": "eu-west-lim"
+  },
+  {
+   "provider": "ovhcloud",
+   "region": "eu-central-waw"
+  },
+  {
+   "provider": "ovhcloud",
+   "region": "eu-west-eri"
+  },
+  {
+   "provider": "ovhcloud",
+   "region": "us-east-vin"
+  },
+  {
+   "provider": "ovhcloud",
+   "region": "us-west-hil"
+  },
+  {
+   "provider": "ovhcloud",
+   "region": "ca-east-bhs"
+  },
+  {
+   "provider": "ovhcloud",
+   "region": "ca-east-tor"
+  },
+  {
+   "provider": "ovhcloud",
+   "region": "ap-southeast-sgp"
+  },
+  {
+   "provider": "ovhcloud",
+   "region": "ap-southeast-syd"
+  },
+  {
+   "provider": "ovhcloud",
+   "region": "ap-south-mum"
+  },
+  {
+   "provider": "ovhcloud",
+   "region": "eu-west-rbx-snc"
+  },
+  {
+   "provider": "ovhcloud",
+   "region": "eu-west-sbg-snc"
+  },
+  {
+   "provider": "ovhcloud",
+   "region": "eu-west-gra-snc"
+  }
+ ]
+}

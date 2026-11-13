@@ -1,0 +1,16 @@
+{
+ "request": {
+  "method": "GET",
+  "path": "/v1/cloud/instance/all_providers",
+  "params": [],
+  "body": null
+ },
+ "status": 200,
+ "json": [
+  "aws",
+  "azure",
+  "gcp",
+  "ovhcloud",
+  "scaleway"
+ ]
+}
