@@ -20,7 +20,7 @@ jobs:
           - 5000:5000
     steps:
       - uses: actions/checkout@v7
-      - uses: astral-sh/setup-uv@v10.3.3
+      - uses: astral-sh/setup-uv@v10.4.0
       - run: uv sync --locked
       - name: Wait for BoaviztAPI
         run: |
